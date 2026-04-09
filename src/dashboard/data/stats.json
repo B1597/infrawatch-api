@@ -1,0 +1,15 @@
+{
+  "totalNodes": 117,
+  "online": 85,
+  "warnings": 13,
+  "offline": 19,
+  "datacenters": 15,
+  "racks": 34,
+  "servers": 30,
+  "vms": 0,
+  "services": 0,
+  "trends": {
+    "totalNodes": { "change": 8, "direction": "up" },
+    "warnings": { "change": 3, "direction": "down" }
+  }
+}
