@@ -1,0 +1,991 @@
+[
+  {
+    "id": "dc-west",
+    "kind": "datacenter",
+    "label": "US West Datacenter",
+    "status": "online",
+    "location": "San Francisco"
+  },
+  {
+    "id": "dc-east",
+    "kind": "datacenter",
+    "label": "US East Datacenter",
+    "status": "online",
+    "location": "New York"
+  },
+  {
+    "id": "dc-eu",
+    "kind": "datacenter",
+    "label": "EU Datacenter",
+    "status": "warning",
+    "location": "Frankfurt"
+  },
+  {
+    "id": "dc-ap-sg",
+    "kind": "datacenter",
+    "label": "AP Singapore Datacenter",
+    "status": "online",
+    "location": "Singapore"
+  },
+  {
+    "id": "dc-ap-tk",
+    "kind": "datacenter",
+    "label": "AP Tokyo Datacenter",
+    "status": "online",
+    "location": "Tokyo"
+  },
+  {
+    "id": "dc-uk",
+    "kind": "datacenter",
+    "label": "UK Datacenter",
+    "status": "online",
+    "location": "London"
+  },
+  {
+    "id": "dc-ca",
+    "kind": "datacenter",
+    "label": "Canada Datacenter",
+    "status": "warning",
+    "location": "Toronto"
+  },
+  {
+    "id": "dc-aus",
+    "kind": "datacenter",
+    "label": "Australia Datacenter",
+    "status": "online",
+    "location": "Sydney"
+  },
+  {
+    "id": "dc-br",
+    "kind": "datacenter",
+    "label": "Brazil Datacenter",
+    "status": "critical",
+    "location": "S\u00e3o Paulo"
+  },
+  {
+    "id": "dc-in",
+    "kind": "datacenter",
+    "label": "India Datacenter",
+    "status": "online",
+    "location": "Mumbai"
+  },
+  {
+    "id": "dc-za",
+    "kind": "datacenter",
+    "label": "South Africa Datacenter",
+    "status": "offline",
+    "location": "Johannesburg"
+  },
+  {
+    "id": "dc-nl",
+    "kind": "datacenter",
+    "label": "Netherlands Datacenter",
+    "status": "online",
+    "location": "Amsterdam"
+  },
+  {
+    "id": "dc-us-central",
+    "kind": "datacenter",
+    "label": "US Central Datacenter",
+    "status": "online",
+    "location": "Chicago"
+  },
+  {
+    "id": "dc-us-south",
+    "kind": "datacenter",
+    "label": "US South Datacenter",
+    "status": "offline",
+    "location": "Dallas"
+  },
+  {
+    "id": "dc-kr",
+    "kind": "datacenter",
+    "label": "South Korea Datacenter",
+    "status": "online",
+    "location": "Seoul"
+  },
+  {
+    "id": "rack-w1",
+    "kind": "rack",
+    "label": "Rack W1",
+    "status": "online",
+    "parent": "dc-west",
+    "meta": {
+      "floor": "Floor 3"
+    }
+  },
+  {
+    "id": "rack-w2",
+    "kind": "rack",
+    "label": "Rack W2",
+    "status": "online",
+    "parent": "dc-west",
+    "meta": {
+      "floor": "Floor 3"
+    }
+  },
+  {
+    "id": "rack-w3",
+    "kind": "rack",
+    "label": "Rack W3",
+    "status": "warning",
+    "parent": "dc-west",
+    "meta": {
+      "floor": "Floor 2"
+    }
+  },
+  {
+    "id": "rack-e1",
+    "kind": "rack",
+    "label": "Rack E1",
+    "status": "online",
+    "parent": "dc-east",
+    "meta": {
+      "floor": "Floor 5"
+    }
+  },
+  {
+    "id": "rack-e2",
+    "kind": "rack",
+    "label": "Rack E2",
+    "status": "online",
+    "parent": "dc-east",
+    "meta": {
+      "floor": "Floor 5"
+    }
+  },
+  {
+    "id": "rack-eu1",
+    "kind": "rack",
+    "label": "Rack EU1",
+    "status": "warning",
+    "parent": "dc-eu",
+    "meta": {
+      "floor": "Floor 2"
+    }
+  },
+  {
+    "id": "rack-sg1",
+    "kind": "rack",
+    "label": "Rack SG1",
+    "status": "online",
+    "parent": "dc-ap-sg",
+    "meta": {
+      "floor": "Floor 1"
+    }
+  },
+  {
+    "id": "rack-sg2",
+    "kind": "rack",
+    "label": "Rack SG2",
+    "status": "online",
+    "parent": "dc-ap-sg",
+    "meta": {
+      "floor": "Floor 1"
+    }
+  },
+  {
+    "id": "rack-sg3",
+    "kind": "rack",
+    "label": "Rack SG3",
+    "status": "warning",
+    "parent": "dc-ap-sg",
+    "meta": {
+      "floor": "Floor 2"
+    }
+  },
+  {
+    "id": "rack-tk1",
+    "kind": "rack",
+    "label": "Rack TK1",
+    "status": "online",
+    "parent": "dc-ap-tk",
+    "meta": {
+      "floor": "Floor 3"
+    }
+  },
+  {
+    "id": "rack-tk2",
+    "kind": "rack",
+    "label": "Rack TK2",
+    "status": "online",
+    "parent": "dc-ap-tk",
+    "meta": {
+      "floor": "Floor 3"
+    }
+  },
+  {
+    "id": "rack-uk1",
+    "kind": "rack",
+    "label": "Rack UK1",
+    "status": "online",
+    "parent": "dc-uk",
+    "meta": {
+      "floor": "Floor 2"
+    }
+  },
+  {
+    "id": "rack-uk2",
+    "kind": "rack",
+    "label": "Rack UK2",
+    "status": "online",
+    "parent": "dc-uk",
+    "meta": {
+      "floor": "Floor 2"
+    }
+  },
+  {
+    "id": "rack-uk3",
+    "kind": "rack",
+    "label": "Rack UK3",
+    "status": "online",
+    "parent": "dc-uk",
+    "meta": {
+      "floor": "Floor 3"
+    }
+  },
+  {
+    "id": "rack-ca1",
+    "kind": "rack",
+    "label": "Rack CA1",
+    "status": "warning",
+    "parent": "dc-ca",
+    "meta": {
+      "floor": "Floor 1"
+    }
+  },
+  {
+    "id": "rack-ca2",
+    "kind": "rack",
+    "label": "Rack CA2",
+    "status": "online",
+    "parent": "dc-ca",
+    "meta": {
+      "floor": "Floor 1"
+    }
+  },
+  {
+    "id": "rack-aus1",
+    "kind": "rack",
+    "label": "Rack AUS1",
+    "status": "online",
+    "parent": "dc-aus",
+    "meta": {
+      "floor": "Floor 4"
+    }
+  },
+  {
+    "id": "rack-aus2",
+    "kind": "rack",
+    "label": "Rack AUS2",
+    "status": "online",
+    "parent": "dc-aus",
+    "meta": {
+      "floor": "Floor 4"
+    }
+  },
+  {
+    "id": "rack-br1",
+    "kind": "rack",
+    "label": "Rack BR1",
+    "status": "critical",
+    "parent": "dc-br",
+    "meta": {
+      "floor": "Floor 1"
+    }
+  },
+  {
+    "id": "rack-br2",
+    "kind": "rack",
+    "label": "Rack BR2",
+    "status": "offline",
+    "parent": "dc-br",
+    "meta": {
+      "floor": "Floor 1"
+    }
+  },
+  {
+    "id": "rack-in1",
+    "kind": "rack",
+    "label": "Rack IN1",
+    "status": "online",
+    "parent": "dc-in",
+    "meta": {
+      "floor": "Floor 2"
+    }
+  },
+  {
+    "id": "rack-in2",
+    "kind": "rack",
+    "label": "Rack IN2",
+    "status": "online",
+    "parent": "dc-in",
+    "meta": {
+      "floor": "Floor 2"
+    }
+  },
+  {
+    "id": "rack-in3",
+    "kind": "rack",
+    "label": "Rack IN3",
+    "status": "warning",
+    "parent": "dc-in",
+    "meta": {
+      "floor": "Floor 3"
+    }
+  },
+  {
+    "id": "rack-za1",
+    "kind": "rack",
+    "label": "Rack ZA1",
+    "status": "offline",
+    "parent": "dc-za",
+    "meta": {
+      "floor": "Floor 1"
+    }
+  },
+  {
+    "id": "rack-za2",
+    "kind": "rack",
+    "label": "Rack ZA2",
+    "status": "offline",
+    "parent": "dc-za",
+    "meta": {
+      "floor": "Floor 1"
+    }
+  },
+  {
+    "id": "rack-nl1",
+    "kind": "rack",
+    "label": "Rack NL1",
+    "status": "online",
+    "parent": "dc-nl",
+    "meta": {
+      "floor": "Floor 3"
+    }
+  },
+  {
+    "id": "rack-nl2",
+    "kind": "rack",
+    "label": "Rack NL2",
+    "status": "online",
+    "parent": "dc-nl",
+    "meta": {
+      "floor": "Floor 3"
+    }
+  },
+  {
+    "id": "rack-nl3",
+    "kind": "rack",
+    "label": "Rack NL3",
+    "status": "online",
+    "parent": "dc-nl",
+    "meta": {
+      "floor": "Floor 4"
+    }
+  },
+  {
+    "id": "rack-uc1",
+    "kind": "rack",
+    "label": "Rack UC1",
+    "status": "online",
+    "parent": "dc-us-central",
+    "meta": {
+      "floor": "Floor 2"
+    }
+  },
+  {
+    "id": "rack-uc2",
+    "kind": "rack",
+    "label": "Rack UC2",
+    "status": "online",
+    "parent": "dc-us-central",
+    "meta": {
+      "floor": "Floor 2"
+    }
+  },
+  {
+    "id": "rack-us1",
+    "kind": "rack",
+    "label": "Rack US1",
+    "status": "offline",
+    "parent": "dc-us-south",
+    "meta": {
+      "floor": "Floor 1"
+    }
+  },
+  {
+    "id": "rack-us2",
+    "kind": "rack",
+    "label": "Rack US2",
+    "status": "offline",
+    "parent": "dc-us-south",
+    "meta": {
+      "floor": "Floor 1"
+    }
+  },
+  {
+    "id": "rack-kr1",
+    "kind": "rack",
+    "label": "Rack KR1",
+    "status": "online",
+    "parent": "dc-kr",
+    "meta": {
+      "floor": "Floor 5"
+    }
+  },
+  {
+    "id": "rack-kr2",
+    "kind": "rack",
+    "label": "Rack KR2",
+    "status": "online",
+    "parent": "dc-kr",
+    "meta": {
+      "floor": "Floor 5"
+    }
+  },
+  {
+    "id": "srv-w1-01",
+    "kind": "server",
+    "label": "Server W1-5",
+    "state": "online",
+    "parent": "rack-w1",
+    "ip": "10.0.1.10"
+  },
+  {
+    "id": "srv-w1-02",
+    "kind": "server",
+    "label": "Server W1-6",
+    "state": "online",
+    "parent": "rack-w1",
+    "ip": "10.0.1.11"
+  },
+  {
+    "id": "srv-w1-03",
+    "kind": "server",
+    "label": "Server W1-7",
+    "state": "maintenance",
+    "parent": "rack-w1",
+    "ip": "10.0.1.12"
+  },
+  {
+    "id": "sw-w2-01",
+    "kind": "switch",
+    "label": "Core Switch W2-4",
+    "state": "online",
+    "parent": "rack-w2",
+    "ip": "10.0.2.1"
+  },
+  {
+    "id": "sw-w2-02",
+    "kind": "switch",
+    "label": "Core Switch W2-5",
+    "state": "online",
+    "parent": "rack-w2",
+    "ip": "10.0.2.2"
+  },
+  {
+    "id": "rt-w2-01",
+    "kind": "router",
+    "label": "Edge Router W2-5",
+    "state": "online",
+    "parent": "rack-w2",
+    "ip": "10.0.0.1"
+  },
+  {
+    "id": "stor-w3-01",
+    "kind": "storage",
+    "label": "NAS Primary W3-2",
+    "state": "online",
+    "parent": "rack-w3",
+    "ip": "10.0.3.10"
+  },
+  {
+    "id": "stor-w3-02",
+    "kind": "storage",
+    "label": "NAS Backup W3-3",
+    "state": "warning",
+    "parent": "rack-w3",
+    "ip": "10.0.3.11"
+  },
+  {
+    "id": "srv-e1-01",
+    "kind": "server",
+    "label": "Server E1-1",
+    "state": "online",
+    "parent": "rack-e1",
+    "ip": "10.1.1.10"
+  },
+  {
+    "id": "srv-e1-02",
+    "kind": "server",
+    "label": "Server E1-2",
+    "state": "offline",
+    "parent": "rack-e1",
+    "ip": "10.1.1.11"
+  },
+  {
+    "id": "sw-e2-01",
+    "kind": "switch",
+    "label": "Core Switch E2-9",
+    "state": "online",
+    "parent": "rack-e2",
+    "ip": "10.1.2.1"
+  },
+  {
+    "id": "rt-e2-01",
+    "kind": "router",
+    "label": "Edge Router E2-1",
+    "state": "online",
+    "parent": "rack-e2",
+    "ip": "10.1.0.1"
+  },
+  {
+    "id": "srv-eu1-01",
+    "kind": "server",
+    "label": "Server EU1-8",
+    "state": "warning",
+    "parent": "rack-eu1",
+    "ip": "10.2.1.10"
+  },
+  {
+    "id": "srv-sg1-01",
+    "kind": "server",
+    "label": "Server SG1-8",
+    "state": "online",
+    "parent": "rack-sg1",
+    "ip": "10.3.1.10"
+  },
+  {
+    "id": "srv-sg1-02",
+    "kind": "server",
+    "label": "Server SG1-9",
+    "state": "online",
+    "parent": "rack-sg1",
+    "ip": "10.3.1.11"
+  },
+  {
+    "id": "sw-sg2-01",
+    "kind": "switch",
+    "label": "Core Switch SG2-9",
+    "state": "online",
+    "parent": "rack-sg2",
+    "ip": "10.3.2.1"
+  },
+  {
+    "id": "rt-sg2-01",
+    "kind": "router",
+    "label": "Edge Router SG2-3",
+    "state": "online",
+    "parent": "rack-sg2",
+    "ip": "10.3.0.1"
+  },
+  {
+    "id": "stor-sg3-01",
+    "kind": "storage",
+    "label": "NAS Primary SG3-5",
+    "state": "warning",
+    "parent": "rack-sg3",
+    "ip": "10.3.3.10"
+  },
+  {
+    "id": "srv-tk1-01",
+    "kind": "server",
+    "label": "Server TK1-9",
+    "state": "online",
+    "parent": "rack-tk1",
+    "ip": "10.4.1.10"
+  },
+  {
+    "id": "srv-tk1-02",
+    "kind": "server",
+    "label": "Server TK1-1",
+    "state": "online",
+    "parent": "rack-tk1",
+    "ip": "10.4.1.11"
+  },
+  {
+    "id": "sw-tk2-01",
+    "kind": "switch",
+    "label": "Core Switch TK2-1",
+    "state": "online",
+    "parent": "rack-tk2",
+    "ip": "10.4.2.1"
+  },
+  {
+    "id": "rt-tk2-01",
+    "kind": "router",
+    "label": "Edge Router TK2-4",
+    "state": "online",
+    "parent": "rack-tk2",
+    "ip": "10.4.0.1"
+  },
+  {
+    "id": "srv-uk1-01",
+    "kind": "server",
+    "label": "Server UK1-8",
+    "state": "online",
+    "parent": "rack-uk1",
+    "ip": "10.5.1.10"
+  },
+  {
+    "id": "srv-uk1-02",
+    "kind": "server",
+    "label": "Server UK1-9",
+    "state": "online",
+    "parent": "rack-uk1",
+    "ip": "10.5.1.11"
+  },
+  {
+    "id": "sw-uk2-01",
+    "kind": "switch",
+    "label": "Core Switch UK2-9",
+    "state": "online",
+    "parent": "rack-uk2",
+    "ip": "10.5.2.1"
+  },
+  {
+    "id": "sw-uk2-02",
+    "kind": "switch",
+    "label": "Core Switch UK2-1",
+    "state": "online",
+    "parent": "rack-uk2",
+    "ip": "10.5.2.2"
+  },
+  {
+    "id": "stor-uk3-01",
+    "kind": "storage",
+    "label": "NAS Primary UK3-5",
+    "state": "online",
+    "parent": "rack-uk3",
+    "ip": "10.5.3.10"
+  },
+  {
+    "id": "stor-uk3-02",
+    "kind": "storage",
+    "label": "NAS Backup UK3-6",
+    "state": "online",
+    "parent": "rack-uk3",
+    "ip": "10.5.3.11"
+  },
+  {
+    "id": "srv-ca1-01",
+    "kind": "server",
+    "label": "Server CA1-5",
+    "state": "warning",
+    "parent": "rack-ca1",
+    "ip": "10.6.1.10"
+  },
+  {
+    "id": "srv-ca1-02",
+    "kind": "server",
+    "label": "Server CA1-6",
+    "state": "online",
+    "parent": "rack-ca1",
+    "ip": "10.6.1.11"
+  },
+  {
+    "id": "sw-ca2-01",
+    "kind": "switch",
+    "label": "Core Switch CA2-8",
+    "state": "online",
+    "parent": "rack-ca2",
+    "ip": "10.6.2.1"
+  },
+  {
+    "id": "rt-ca2-01",
+    "kind": "router",
+    "label": "Edge Router CA2-2",
+    "state": "online",
+    "parent": "rack-ca2",
+    "ip": "10.6.0.1"
+  },
+  {
+    "id": "srv-aus1-01",
+    "kind": "server",
+    "label": "Server AUS1-1",
+    "state": "online",
+    "parent": "rack-aus1",
+    "ip": "10.7.1.10"
+  },
+  {
+    "id": "srv-aus1-02",
+    "kind": "server",
+    "label": "Server AUS1-2",
+    "state": "online",
+    "parent": "rack-aus1",
+    "ip": "10.7.1.11"
+  },
+  {
+    "id": "sw-aus2-01",
+    "kind": "switch",
+    "label": "Core Switch AUS2-8",
+    "state": "online",
+    "parent": "rack-aus2",
+    "ip": "10.7.2.1"
+  },
+  {
+    "id": "stor-aus2-01",
+    "kind": "storage",
+    "label": "NAS Primary AUS2-4",
+    "state": "online",
+    "parent": "rack-aus2",
+    "ip": "10.7.3.10"
+  },
+  {
+    "id": "srv-br1-01",
+    "kind": "server",
+    "label": "Server BR1-5",
+    "state": "critical",
+    "parent": "rack-br1",
+    "ip": "10.8.1.10"
+  },
+  {
+    "id": "srv-br1-02",
+    "kind": "server",
+    "label": "Server BR1-6",
+    "state": "offline",
+    "parent": "rack-br1",
+    "ip": "10.8.1.11"
+  },
+  {
+    "id": "sw-br2-01",
+    "kind": "switch",
+    "label": "Core Switch BR2-6",
+    "state": "critical",
+    "parent": "rack-br2",
+    "ip": "10.8.2.1"
+  },
+  {
+    "id": "rt-br2-01",
+    "kind": "router",
+    "label": "Edge Router BR2-9",
+    "state": "offline",
+    "parent": "rack-br2",
+    "ip": "10.8.0.1"
+  },
+  {
+    "id": "srv-in1-01",
+    "kind": "server",
+    "label": "Server IN1-3",
+    "state": "online",
+    "parent": "rack-in1",
+    "ip": "10.9.1.10"
+  },
+  {
+    "id": "srv-in1-02",
+    "kind": "server",
+    "label": "Server IN1-4",
+    "state": "online",
+    "parent": "rack-in1",
+    "ip": "10.9.1.11"
+  },
+  {
+    "id": "sw-in2-01",
+    "kind": "switch",
+    "label": "Core Switch IN2-4",
+    "state": "online",
+    "parent": "rack-in2",
+    "ip": "10.9.2.1"
+  },
+  {
+    "id": "rt-in2-01",
+    "kind": "router",
+    "label": "Edge Router IN2-7",
+    "state": "online",
+    "parent": "rack-in2",
+    "ip": "10.9.0.1"
+  },
+  {
+    "id": "stor-in3-01",
+    "kind": "storage",
+    "label": "NAS Primary IN3-9",
+    "state": "warning",
+    "parent": "rack-in3",
+    "ip": "10.9.3.10"
+  },
+  {
+    "id": "stor-in3-02",
+    "kind": "storage",
+    "label": "NAS Backup IN3-1",
+    "state": "online",
+    "parent": "rack-in3",
+    "ip": "10.9.3.11"
+  },
+  {
+    "id": "srv-za1-01",
+    "kind": "server",
+    "label": "Server ZA1-3",
+    "state": "warning",
+    "parent": "rack-za1",
+    "ip": "10.10.1.10"
+  },
+  {
+    "id": "srv-za1-02",
+    "kind": "server",
+    "label": "Server ZA1-4",
+    "state": "online",
+    "parent": "rack-za1",
+    "ip": "10.10.1.11"
+  },
+  {
+    "id": "sw-za2-01",
+    "kind": "switch",
+    "label": "Core Switch ZA2-4",
+    "state": "online",
+    "parent": "rack-za2",
+    "ip": "10.10.2.1"
+  },
+  {
+    "id": "rt-za2-01",
+    "kind": "router",
+    "label": "Edge Router ZA2-7",
+    "state": "online",
+    "parent": "rack-za2",
+    "ip": "10.10.0.1"
+  },
+  {
+    "id": "srv-nl1-01",
+    "kind": "server",
+    "label": "Server NL1-4",
+    "state": "online",
+    "parent": "rack-nl1",
+    "ip": "10.11.1.10"
+  },
+  {
+    "id": "srv-nl1-02",
+    "kind": "server",
+    "label": "Server NL1-5",
+    "state": "online",
+    "parent": "rack-nl1",
+    "ip": "10.11.1.11"
+  },
+  {
+    "id": "sw-nl2-01",
+    "kind": "switch",
+    "label": "Core Switch NL2-5",
+    "state": "online",
+    "parent": "rack-nl2",
+    "ip": "10.11.2.1"
+  },
+  {
+    "id": "sw-nl2-02",
+    "kind": "switch",
+    "label": "Core Switch NL2-6",
+    "state": "online",
+    "parent": "rack-nl2",
+    "ip": "10.11.2.2"
+  },
+  {
+    "id": "stor-nl3-01",
+    "kind": "storage",
+    "label": "NAS Primary NL3-1",
+    "state": "online",
+    "parent": "rack-nl3",
+    "ip": "10.11.3.10"
+  },
+  {
+    "id": "stor-nl3-02",
+    "kind": "storage",
+    "label": "NAS Backup NL3-2",
+    "state": "online",
+    "parent": "rack-nl3",
+    "ip": "10.11.3.11"
+  },
+  {
+    "id": "srv-uc1-01",
+    "kind": "server",
+    "label": "Server UC1-2",
+    "state": "online",
+    "parent": "rack-uc1",
+    "ip": "10.12.1.10"
+  },
+  {
+    "id": "srv-uc1-02",
+    "kind": "server",
+    "label": "Server UC1-3",
+    "state": "online",
+    "parent": "rack-uc1",
+    "ip": "10.12.1.11"
+  },
+  {
+    "id": "sw-uc2-01",
+    "kind": "switch",
+    "label": "Core Switch UC2-3",
+    "state": "online",
+    "parent": "rack-uc2",
+    "ip": "10.12.2.1"
+  },
+  {
+    "id": "stor-uc2-01",
+    "kind": "storage",
+    "label": "NAS Primary UC2-7",
+    "state": "online",
+    "parent": "rack-uc2",
+    "ip": "10.12.3.10"
+  },
+  {
+    "id": "srv-us1-01",
+    "kind": "server",
+    "label": "Server US1-3",
+    "state": "maintenance",
+    "parent": "rack-us1",
+    "ip": "10.13.1.10"
+  },
+  {
+    "id": "srv-us1-02",
+    "kind": "server",
+    "label": "Server US1-4",
+    "state": "maintenance",
+    "parent": "rack-us1",
+    "ip": "10.13.1.11"
+  },
+  {
+    "id": "sw-us2-01",
+    "kind": "switch",
+    "label": "Core Switch US2-6",
+    "state": "maintenance",
+    "parent": "rack-us2",
+    "ip": "10.13.2.1"
+  },
+  {
+    "id": "rt-us2-01",
+    "kind": "router",
+    "label": "Edge Router US2-9",
+    "state": "maintenance",
+    "parent": "rack-us2",
+    "ip": "10.13.0.1"
+  },
+  {
+    "id": "srv-kr1-01",
+    "kind": "server",
+    "label": "Server KR1-3",
+    "state": "online",
+    "parent": "rack-kr1",
+    "ip": "10.14.1.10"
+  },
+  {
+    "id": "srv-kr1-02",
+    "kind": "server",
+    "label": "Server KR1-4",
+    "state": "online",
+    "parent": "rack-kr1",
+    "ip": "10.14.1.11"
+  },
+  {
+    "id": "sw-kr2-01",
+    "kind": "switch",
+    "label": "Core Switch KR2-4",
+    "state": "online",
+    "parent": "rack-kr2",
+    "ip": "10.14.2.1"
+  },
+  {
+    "id": "stor-kr2-01",
+    "kind": "storage",
+    "label": "NAS Primary KR2-8",
+    "state": "online",
+    "parent": "rack-kr2",
+    "ip": "10.14.3.10"
+  }
+]
