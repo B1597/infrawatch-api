@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(del \"C:\\\\ops-board\\\\infra-watch-api\\\\src\\\\app.controller.ts\")",
+      "Bash(del \"C:\\\\ops-board\\\\infra-watch-api\\\\src\\\\app.service.ts\")",
+      "Bash(del \"C:\\\\ops-board\\\\infra-watch-api\\\\src\\\\app.controller.spec.ts\")"
     ]
   }
 }
