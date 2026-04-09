@@ -19,4 +19,9 @@ export class TopologyController {
   getDevices(@Param('id') id: string) {
     return this.topologyService.getDevices(id);
   }
+
+  @Get('nodes/:id')
+  getNodeDetails(@Param('id') id: string) {
+    return this.topologyService.getNodeDetails(id);
+  }
 }
