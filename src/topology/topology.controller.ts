@@ -1,4 +1,5 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Put, Param, Body } from '@nestjs/common';
+import { UpdateNodeConfigDto } from './dto/node-config.dto';
 import { TopologyService } from './topology.service';
 
 @Controller('topology')
@@ -23,5 +24,20 @@ export class TopologyController {
   @Get('nodes/:id')
   getNodeDetails(@Param('id') id: string) {
     return this.topologyService.getNodeDetails(id);
+  }
+
+  @Get('nodes/:id/metrics')
+  getNodeMetrics(@Param('id') id: string) {
+    return this.topologyService.getNodeMetrics(id);
+  }
+
+  @Get('nodes/:id/config')
+  getNodeConfig(@Param('id') id: string) {
+    return this.topologyService.getNodeConfig(id);
+  }
+
+  @Put('nodes/:id/config')
+  updateNodeConfig(@Param('id') id: string, @Body() dto: UpdateNodeConfigDto) {
+    return this.topologyService.updateNodeConfig(id, dto);
   }
 }

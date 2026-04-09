@@ -1,11 +1,15 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import topologyRaw from './data/topology.json';
 import nodeDetailsRaw from './data/node-details.json';
+import nodeMetricsRaw from './data/node-metrics.json';
+import nodeConfigRaw from './data/node-config.json';
 import { RawTopologyItem } from './interfaces/topology-item.interface';
 import { DatacenterDto } from './dto/datacenter.dto';
 import { DeviceDto } from './dto/device.dto';
 import { RackDto } from './dto/rack.dto';
 import { NodeDetailsDto } from './dto/node-details.dto';
+import { NodeMetricsDto } from './dto/node-metrics.dto';
+import { NodeConfigDto, UpdateNodeConfigDto } from './dto/node-config.dto';
 
 
 @Injectable()
@@ -68,6 +72,40 @@ export class TopologyService {
     const details = (nodeDetailsRaw as NodeDetailsDto[]).find((item) => item.id === id);
     if (!details) throw new NotFoundException(`Node ${id} not found`);
     return details;
+  }
+
+  getNodeMetrics(id: string): NodeMetricsDto {
+    const metrics = (nodeMetricsRaw as NodeMetricsDto[]).find((item) => item.id === id);
+    if (!metrics) throw new NotFoundException(`Metrics for node ${id} not found`);
+    return metrics;
+  }
+
+  getNodeConfig(id: string): NodeConfigDto {
+    const details = (nodeDetailsRaw as NodeDetailsDto[]).find((item) => item.id === id);
+    if (!details) throw new NotFoundException(`Node ${id} not found`);
+
+    const config = (nodeConfigRaw as any[]).find((item) => item.id === id);
+
+    return {
+      id: details.id,
+      type: details.type,
+      name: details.name,
+      ...(details.location !== undefined && { location: details.location }),
+      ...(details.ipAddress !== undefined && { ipAddress: details.ipAddress }),
+      ...(config?.password !== undefined && { password: config.password }),
+      ...(config?.registrationId !== undefined && { registrationId: config.registrationId }),
+      ...(config?.macAddress !== undefined && { macAddress: config.macAddress }),
+    };
+  }
+
+  updateNodeConfig(id: string, dto: UpdateNodeConfigDto): NodeConfigDto {
+    const details = (nodeDetailsRaw as NodeDetailsDto[]).find((item) => item.id === id);
+    if (!details) throw new NotFoundException(`Node ${id} not found`);
+
+    const config = (nodeConfigRaw as any[]).find((item) => item.id === id);
+    if (!config) throw new NotFoundException(`Config for node ${id} not found`);
+
+    return { ...this.getNodeConfig(id), ...dto };
   }
 
 }
