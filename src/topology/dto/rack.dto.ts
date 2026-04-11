@@ -1,8 +1,21 @@
-export interface RackDto {
-  id: string;
-  name: string;
-  type: 'rack';
-  status: string;
-  location: string;
-  parentId: string;
+import { ApiProperty } from '@nestjs/swagger';
+
+export class RackDto {
+  @ApiProperty()
+  id!: string;
+
+  @ApiProperty()
+  name!: string;
+
+  @ApiProperty({ example: 'rack' })
+  type!: 'rack';
+
+  @ApiProperty()
+  status!: string;
+
+  @ApiProperty()
+  location!: string;
+
+  @ApiProperty()
+  parentId!: string;
 }

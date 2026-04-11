@@ -1,7 +1,18 @@
-export interface DatacenterDto {
-  id: string;
-  name: string;
-  type: 'datacenter';
-  status: string;
-  location: string;
+import { ApiProperty } from '@nestjs/swagger';
+
+export class DatacenterDto {
+  @ApiProperty()
+  id!: string;
+
+  @ApiProperty()
+  name!: string;
+
+  @ApiProperty({ example: 'datacenter' })
+  type!: 'datacenter';
+
+  @ApiProperty()
+  status!: string;
+
+  @ApiProperty()
+  location!: string;
 }

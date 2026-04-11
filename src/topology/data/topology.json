@@ -1,112 +1,112 @@
 [
   {
     "id": "dc-west",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "US West Datacenter",
     "status": "online",
     "location": "San Francisco"
   },
   {
     "id": "dc-east",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "US East Datacenter",
     "status": "online",
     "location": "New York"
   },
   {
     "id": "dc-eu",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "EU Datacenter",
     "status": "warning",
     "location": "Frankfurt"
   },
   {
     "id": "dc-ap-sg",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "AP Singapore Datacenter",
     "status": "online",
     "location": "Singapore"
   },
   {
     "id": "dc-ap-tk",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "AP Tokyo Datacenter",
     "status": "online",
     "location": "Tokyo"
   },
   {
     "id": "dc-uk",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "UK Datacenter",
     "status": "online",
     "location": "London"
   },
   {
     "id": "dc-ca",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "Canada Datacenter",
     "status": "warning",
     "location": "Toronto"
   },
   {
     "id": "dc-aus",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "Australia Datacenter",
     "status": "online",
     "location": "Sydney"
   },
   {
     "id": "dc-br",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "Brazil Datacenter",
     "status": "critical",
     "location": "S\u00e3o Paulo"
   },
   {
     "id": "dc-in",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "India Datacenter",
     "status": "online",
     "location": "Mumbai"
   },
   {
     "id": "dc-za",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "South Africa Datacenter",
     "status": "offline",
     "location": "Johannesburg"
   },
   {
     "id": "dc-nl",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "Netherlands Datacenter",
     "status": "online",
     "location": "Amsterdam"
   },
   {
     "id": "dc-us-central",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "US Central Datacenter",
     "status": "online",
     "location": "Chicago"
   },
   {
     "id": "dc-us-south",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "US South Datacenter",
     "status": "offline",
     "location": "Dallas"
   },
   {
     "id": "dc-kr",
-    "kind": "datacenter",
+    "type": "datacenter",
     "label": "South Korea Datacenter",
     "status": "online",
     "location": "Seoul"
   },
   {
     "id": "rack-w1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack W1",
     "status": "online",
     "parent": "dc-west",
@@ -116,7 +116,7 @@
   },
   {
     "id": "rack-w2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack W2",
     "status": "online",
     "parent": "dc-west",
@@ -126,7 +126,7 @@
   },
   {
     "id": "rack-w3",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack W3",
     "status": "warning",
     "parent": "dc-west",
@@ -136,7 +136,7 @@
   },
   {
     "id": "rack-e1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack E1",
     "status": "online",
     "parent": "dc-east",
@@ -146,7 +146,7 @@
   },
   {
     "id": "rack-e2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack E2",
     "status": "online",
     "parent": "dc-east",
@@ -156,7 +156,7 @@
   },
   {
     "id": "rack-eu1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack EU1",
     "status": "warning",
     "parent": "dc-eu",
@@ -166,7 +166,7 @@
   },
   {
     "id": "rack-sg1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack SG1",
     "status": "online",
     "parent": "dc-ap-sg",
@@ -176,7 +176,7 @@
   },
   {
     "id": "rack-sg2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack SG2",
     "status": "online",
     "parent": "dc-ap-sg",
@@ -186,7 +186,7 @@
   },
   {
     "id": "rack-sg3",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack SG3",
     "status": "warning",
     "parent": "dc-ap-sg",
@@ -196,7 +196,7 @@
   },
   {
     "id": "rack-tk1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack TK1",
     "status": "online",
     "parent": "dc-ap-tk",
@@ -206,7 +206,7 @@
   },
   {
     "id": "rack-tk2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack TK2",
     "status": "online",
     "parent": "dc-ap-tk",
@@ -216,7 +216,7 @@
   },
   {
     "id": "rack-uk1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack UK1",
     "status": "online",
     "parent": "dc-uk",
@@ -226,7 +226,7 @@
   },
   {
     "id": "rack-uk2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack UK2",
     "status": "online",
     "parent": "dc-uk",
@@ -236,7 +236,7 @@
   },
   {
     "id": "rack-uk3",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack UK3",
     "status": "online",
     "parent": "dc-uk",
@@ -246,7 +246,7 @@
   },
   {
     "id": "rack-ca1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack CA1",
     "status": "warning",
     "parent": "dc-ca",
@@ -256,7 +256,7 @@
   },
   {
     "id": "rack-ca2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack CA2",
     "status": "online",
     "parent": "dc-ca",
@@ -266,7 +266,7 @@
   },
   {
     "id": "rack-aus1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack AUS1",
     "status": "online",
     "parent": "dc-aus",
@@ -276,7 +276,7 @@
   },
   {
     "id": "rack-aus2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack AUS2",
     "status": "online",
     "parent": "dc-aus",
@@ -286,7 +286,7 @@
   },
   {
     "id": "rack-br1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack BR1",
     "status": "critical",
     "parent": "dc-br",
@@ -296,7 +296,7 @@
   },
   {
     "id": "rack-br2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack BR2",
     "status": "offline",
     "parent": "dc-br",
@@ -306,7 +306,7 @@
   },
   {
     "id": "rack-in1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack IN1",
     "status": "online",
     "parent": "dc-in",
@@ -316,7 +316,7 @@
   },
   {
     "id": "rack-in2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack IN2",
     "status": "online",
     "parent": "dc-in",
@@ -326,7 +326,7 @@
   },
   {
     "id": "rack-in3",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack IN3",
     "status": "warning",
     "parent": "dc-in",
@@ -336,7 +336,7 @@
   },
   {
     "id": "rack-za1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack ZA1",
     "status": "offline",
     "parent": "dc-za",
@@ -346,7 +346,7 @@
   },
   {
     "id": "rack-za2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack ZA2",
     "status": "offline",
     "parent": "dc-za",
@@ -356,7 +356,7 @@
   },
   {
     "id": "rack-nl1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack NL1",
     "status": "online",
     "parent": "dc-nl",
@@ -366,7 +366,7 @@
   },
   {
     "id": "rack-nl2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack NL2",
     "status": "online",
     "parent": "dc-nl",
@@ -376,7 +376,7 @@
   },
   {
     "id": "rack-nl3",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack NL3",
     "status": "online",
     "parent": "dc-nl",
@@ -386,7 +386,7 @@
   },
   {
     "id": "rack-uc1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack UC1",
     "status": "online",
     "parent": "dc-us-central",
@@ -396,7 +396,7 @@
   },
   {
     "id": "rack-uc2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack UC2",
     "status": "online",
     "parent": "dc-us-central",
@@ -406,7 +406,7 @@
   },
   {
     "id": "rack-us1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack US1",
     "status": "offline",
     "parent": "dc-us-south",
@@ -416,7 +416,7 @@
   },
   {
     "id": "rack-us2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack US2",
     "status": "offline",
     "parent": "dc-us-south",
@@ -426,7 +426,7 @@
   },
   {
     "id": "rack-kr1",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack KR1",
     "status": "online",
     "parent": "dc-kr",
@@ -436,7 +436,7 @@
   },
   {
     "id": "rack-kr2",
-    "kind": "rack",
+    "type": "rack",
     "label": "Rack KR2",
     "status": "online",
     "parent": "dc-kr",
@@ -446,7 +446,7 @@
   },
   {
     "id": "srv-w1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server W1-5",
     "state": "online",
     "parent": "rack-w1",
@@ -454,7 +454,7 @@
   },
   {
     "id": "srv-w1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server W1-6",
     "state": "online",
     "parent": "rack-w1",
@@ -462,7 +462,7 @@
   },
   {
     "id": "srv-w1-03",
-    "kind": "server",
+    "type": "server",
     "label": "Server W1-7",
     "state": "maintenance",
     "parent": "rack-w1",
@@ -470,7 +470,7 @@
   },
   {
     "id": "sw-w2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch W2-4",
     "state": "online",
     "parent": "rack-w2",
@@ -478,7 +478,7 @@
   },
   {
     "id": "sw-w2-02",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch W2-5",
     "state": "online",
     "parent": "rack-w2",
@@ -486,7 +486,7 @@
   },
   {
     "id": "rt-w2-01",
-    "kind": "router",
+    "type": "router",
     "label": "Edge Router W2-5",
     "state": "online",
     "parent": "rack-w2",
@@ -494,7 +494,7 @@
   },
   {
     "id": "stor-w3-01",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Primary W3-2",
     "state": "online",
     "parent": "rack-w3",
@@ -502,7 +502,7 @@
   },
   {
     "id": "stor-w3-02",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Backup W3-3",
     "state": "warning",
     "parent": "rack-w3",
@@ -510,7 +510,7 @@
   },
   {
     "id": "srv-e1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server E1-1",
     "state": "online",
     "parent": "rack-e1",
@@ -518,7 +518,7 @@
   },
   {
     "id": "srv-e1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server E1-2",
     "state": "offline",
     "parent": "rack-e1",
@@ -526,7 +526,7 @@
   },
   {
     "id": "sw-e2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch E2-9",
     "state": "online",
     "parent": "rack-e2",
@@ -534,7 +534,7 @@
   },
   {
     "id": "rt-e2-01",
-    "kind": "router",
+    "type": "router",
     "label": "Edge Router E2-1",
     "state": "online",
     "parent": "rack-e2",
@@ -542,7 +542,7 @@
   },
   {
     "id": "srv-eu1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server EU1-8",
     "state": "warning",
     "parent": "rack-eu1",
@@ -550,7 +550,7 @@
   },
   {
     "id": "srv-sg1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server SG1-8",
     "state": "online",
     "parent": "rack-sg1",
@@ -558,7 +558,7 @@
   },
   {
     "id": "srv-sg1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server SG1-9",
     "state": "online",
     "parent": "rack-sg1",
@@ -566,7 +566,7 @@
   },
   {
     "id": "sw-sg2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch SG2-9",
     "state": "online",
     "parent": "rack-sg2",
@@ -574,7 +574,7 @@
   },
   {
     "id": "rt-sg2-01",
-    "kind": "router",
+    "type": "router",
     "label": "Edge Router SG2-3",
     "state": "online",
     "parent": "rack-sg2",
@@ -582,7 +582,7 @@
   },
   {
     "id": "stor-sg3-01",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Primary SG3-5",
     "state": "warning",
     "parent": "rack-sg3",
@@ -590,7 +590,7 @@
   },
   {
     "id": "srv-tk1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server TK1-9",
     "state": "online",
     "parent": "rack-tk1",
@@ -598,7 +598,7 @@
   },
   {
     "id": "srv-tk1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server TK1-1",
     "state": "online",
     "parent": "rack-tk1",
@@ -606,7 +606,7 @@
   },
   {
     "id": "sw-tk2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch TK2-1",
     "state": "online",
     "parent": "rack-tk2",
@@ -614,7 +614,7 @@
   },
   {
     "id": "rt-tk2-01",
-    "kind": "router",
+    "type": "router",
     "label": "Edge Router TK2-4",
     "state": "online",
     "parent": "rack-tk2",
@@ -622,7 +622,7 @@
   },
   {
     "id": "srv-uk1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server UK1-8",
     "state": "online",
     "parent": "rack-uk1",
@@ -630,7 +630,7 @@
   },
   {
     "id": "srv-uk1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server UK1-9",
     "state": "online",
     "parent": "rack-uk1",
@@ -638,7 +638,7 @@
   },
   {
     "id": "sw-uk2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch UK2-9",
     "state": "online",
     "parent": "rack-uk2",
@@ -646,7 +646,7 @@
   },
   {
     "id": "sw-uk2-02",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch UK2-1",
     "state": "online",
     "parent": "rack-uk2",
@@ -654,7 +654,7 @@
   },
   {
     "id": "stor-uk3-01",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Primary UK3-5",
     "state": "online",
     "parent": "rack-uk3",
@@ -662,7 +662,7 @@
   },
   {
     "id": "stor-uk3-02",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Backup UK3-6",
     "state": "online",
     "parent": "rack-uk3",
@@ -670,7 +670,7 @@
   },
   {
     "id": "srv-ca1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server CA1-5",
     "state": "warning",
     "parent": "rack-ca1",
@@ -678,7 +678,7 @@
   },
   {
     "id": "srv-ca1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server CA1-6",
     "state": "online",
     "parent": "rack-ca1",
@@ -686,7 +686,7 @@
   },
   {
     "id": "sw-ca2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch CA2-8",
     "state": "online",
     "parent": "rack-ca2",
@@ -694,7 +694,7 @@
   },
   {
     "id": "rt-ca2-01",
-    "kind": "router",
+    "type": "router",
     "label": "Edge Router CA2-2",
     "state": "online",
     "parent": "rack-ca2",
@@ -702,7 +702,7 @@
   },
   {
     "id": "srv-aus1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server AUS1-1",
     "state": "online",
     "parent": "rack-aus1",
@@ -710,7 +710,7 @@
   },
   {
     "id": "srv-aus1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server AUS1-2",
     "state": "online",
     "parent": "rack-aus1",
@@ -718,7 +718,7 @@
   },
   {
     "id": "sw-aus2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch AUS2-8",
     "state": "online",
     "parent": "rack-aus2",
@@ -726,7 +726,7 @@
   },
   {
     "id": "stor-aus2-01",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Primary AUS2-4",
     "state": "online",
     "parent": "rack-aus2",
@@ -734,7 +734,7 @@
   },
   {
     "id": "srv-br1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server BR1-5",
     "state": "critical",
     "parent": "rack-br1",
@@ -742,7 +742,7 @@
   },
   {
     "id": "srv-br1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server BR1-6",
     "state": "offline",
     "parent": "rack-br1",
@@ -750,7 +750,7 @@
   },
   {
     "id": "sw-br2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch BR2-6",
     "state": "critical",
     "parent": "rack-br2",
@@ -758,7 +758,7 @@
   },
   {
     "id": "rt-br2-01",
-    "kind": "router",
+    "type": "router",
     "label": "Edge Router BR2-9",
     "state": "offline",
     "parent": "rack-br2",
@@ -766,7 +766,7 @@
   },
   {
     "id": "srv-in1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server IN1-3",
     "state": "online",
     "parent": "rack-in1",
@@ -774,7 +774,7 @@
   },
   {
     "id": "srv-in1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server IN1-4",
     "state": "online",
     "parent": "rack-in1",
@@ -782,7 +782,7 @@
   },
   {
     "id": "sw-in2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch IN2-4",
     "state": "online",
     "parent": "rack-in2",
@@ -790,7 +790,7 @@
   },
   {
     "id": "rt-in2-01",
-    "kind": "router",
+    "type": "router",
     "label": "Edge Router IN2-7",
     "state": "online",
     "parent": "rack-in2",
@@ -798,7 +798,7 @@
   },
   {
     "id": "stor-in3-01",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Primary IN3-9",
     "state": "warning",
     "parent": "rack-in3",
@@ -806,7 +806,7 @@
   },
   {
     "id": "stor-in3-02",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Backup IN3-1",
     "state": "online",
     "parent": "rack-in3",
@@ -814,7 +814,7 @@
   },
   {
     "id": "srv-za1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server ZA1-3",
     "state": "warning",
     "parent": "rack-za1",
@@ -822,7 +822,7 @@
   },
   {
     "id": "srv-za1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server ZA1-4",
     "state": "online",
     "parent": "rack-za1",
@@ -830,7 +830,7 @@
   },
   {
     "id": "sw-za2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch ZA2-4",
     "state": "online",
     "parent": "rack-za2",
@@ -838,7 +838,7 @@
   },
   {
     "id": "rt-za2-01",
-    "kind": "router",
+    "type": "router",
     "label": "Edge Router ZA2-7",
     "state": "online",
     "parent": "rack-za2",
@@ -846,7 +846,7 @@
   },
   {
     "id": "srv-nl1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server NL1-4",
     "state": "online",
     "parent": "rack-nl1",
@@ -854,7 +854,7 @@
   },
   {
     "id": "srv-nl1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server NL1-5",
     "state": "online",
     "parent": "rack-nl1",
@@ -862,7 +862,7 @@
   },
   {
     "id": "sw-nl2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch NL2-5",
     "state": "online",
     "parent": "rack-nl2",
@@ -870,7 +870,7 @@
   },
   {
     "id": "sw-nl2-02",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch NL2-6",
     "state": "online",
     "parent": "rack-nl2",
@@ -878,7 +878,7 @@
   },
   {
     "id": "stor-nl3-01",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Primary NL3-1",
     "state": "online",
     "parent": "rack-nl3",
@@ -886,7 +886,7 @@
   },
   {
     "id": "stor-nl3-02",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Backup NL3-2",
     "state": "online",
     "parent": "rack-nl3",
@@ -894,7 +894,7 @@
   },
   {
     "id": "srv-uc1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server UC1-2",
     "state": "online",
     "parent": "rack-uc1",
@@ -902,7 +902,7 @@
   },
   {
     "id": "srv-uc1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server UC1-3",
     "state": "online",
     "parent": "rack-uc1",
@@ -910,7 +910,7 @@
   },
   {
     "id": "sw-uc2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch UC2-3",
     "state": "online",
     "parent": "rack-uc2",
@@ -918,7 +918,7 @@
   },
   {
     "id": "stor-uc2-01",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Primary UC2-7",
     "state": "online",
     "parent": "rack-uc2",
@@ -926,7 +926,7 @@
   },
   {
     "id": "srv-us1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server US1-3",
     "state": "maintenance",
     "parent": "rack-us1",
@@ -934,7 +934,7 @@
   },
   {
     "id": "srv-us1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server US1-4",
     "state": "maintenance",
     "parent": "rack-us1",
@@ -942,7 +942,7 @@
   },
   {
     "id": "sw-us2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch US2-6",
     "state": "maintenance",
     "parent": "rack-us2",
@@ -950,7 +950,7 @@
   },
   {
     "id": "rt-us2-01",
-    "kind": "router",
+    "type": "router",
     "label": "Edge Router US2-9",
     "state": "maintenance",
     "parent": "rack-us2",
@@ -958,7 +958,7 @@
   },
   {
     "id": "srv-kr1-01",
-    "kind": "server",
+    "type": "server",
     "label": "Server KR1-3",
     "state": "online",
     "parent": "rack-kr1",
@@ -966,7 +966,7 @@
   },
   {
     "id": "srv-kr1-02",
-    "kind": "server",
+    "type": "server",
     "label": "Server KR1-4",
     "state": "online",
     "parent": "rack-kr1",
@@ -974,7 +974,7 @@
   },
   {
     "id": "sw-kr2-01",
-    "kind": "switch",
+    "type": "switch",
     "label": "Core Switch KR2-4",
     "state": "online",
     "parent": "rack-kr2",
@@ -982,7 +982,7 @@
   },
   {
     "id": "stor-kr2-01",
-    "kind": "storage",
+    "type": "storage",
     "label": "NAS Primary KR2-8",
     "state": "online",
     "parent": "rack-kr2",

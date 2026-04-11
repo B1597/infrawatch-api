@@ -10,6 +10,7 @@ import { RackDto } from './dto/rack.dto';
 import { NodeDetailsDto } from './dto/node-details.dto';
 import { NodeMetricsDto } from './dto/node-metrics.dto';
 import { NodeConfigDto, UpdateNodeConfigDto } from './dto/node-config.dto';
+import { NodeType } from './types/node-type.enum';
 
 
 @Injectable()
@@ -18,7 +19,7 @@ export class TopologyService {
 
   getDatacenters(): DatacenterDto[] {
     return this.topologyRaw
-      .filter((item) => item.kind === 'datacenter')
+      .filter((item) => item.type === 'datacenter')
       .map((item) => ({
         id: item.id,
         name: item.label,
@@ -30,12 +31,12 @@ export class TopologyService {
 
   getRacks(datacenterId: string): RackDto[] {
     const datacenter = this.topologyRaw.find(
-      (item) => item.kind === 'datacenter' && item.id === datacenterId,
+      (item) => item.type === 'datacenter' && item.id === datacenterId,
     );
     if (!datacenter) throw new NotFoundException(`Datacenter ${datacenterId} not found`);
 
     return this.topologyRaw
-      .filter((item) => item.kind === 'rack' && item.parent === datacenterId)
+      .filter((item) => item.type === 'rack' && item.parent === datacenterId)
       .map((item) => ({
         id: item.id,
         name: item.label,
@@ -48,20 +49,20 @@ export class TopologyService {
 
   getDevices(rackId: string): DeviceDto[] {
     const rack = this.topologyRaw.find(
-      (item) => item.kind === 'rack' && item.id === rackId,
+      (item) => item.type === 'rack' && item.id === rackId,
     );
     if (!rack) throw new NotFoundException(`Rack ${rackId} not found`);
 
     return this.topologyRaw
       .filter(
         (item) =>
-          ['server', 'switch', 'router', 'storage'].includes(item.kind) &&
+          ['server', 'switch', 'router', 'storage', 'vm', 'service'].includes(item.type) &&
           item.parent === rackId,
       )
       .map((item) => ({
         id: item.id,
         name: item.label,
-        type: item.kind as DeviceDto['type'],
+        type: item.type as DeviceDto['type'],
         status: item.state ?? item.status ?? 'unknown',
         ipAddress: item.ip ?? '',
         parentId: item.parent ?? '',
@@ -96,6 +97,23 @@ export class TopologyService {
       ...(config?.registrationId !== undefined && { registrationId: config.registrationId }),
       ...(config?.macAddress !== undefined && { macAddress: config.macAddress }),
     };
+  }
+
+  checkNameExists(
+    name: string,
+    parentId?: string,
+    currentId?: string,
+  ): { exists: boolean } {
+    const normalizedName = name.trim().toLowerCase();
+    const normalizedParentId = parentId?.trim() || null;
+    const normalizedCurrentId = currentId?.trim() || null;
+    const exists = this.topologyRaw.some(
+      (item) =>
+        (item.parent ?? null) === normalizedParentId &&
+        item.id !== normalizedCurrentId &&
+        item.label.trim().toLowerCase() === normalizedName,
+    );
+    return { exists };
   }
 
   updateNodeConfig(id: string, dto: UpdateNodeConfigDto): NodeConfigDto {

@@ -4,7 +4,10 @@
       "Bash(npx tsc:*)",
       "Bash(del \"C:\\\\ops-board\\\\infra-watch-api\\\\src\\\\app.controller.ts\")",
       "Bash(del \"C:\\\\ops-board\\\\infra-watch-api\\\\src\\\\app.service.ts\")",
-      "Bash(del \"C:\\\\ops-board\\\\infra-watch-api\\\\src\\\\app.controller.spec.ts\")"
+      "Bash(del \"C:\\\\ops-board\\\\infra-watch-api\\\\src\\\\app.controller.spec.ts\")",
+      "Bash(find \"C:\\\\ops-board\\\\infra-watch-api\" -type f \\\\\\( -name \"*.ts\" -o -name \"*.js\" -o -name \"*.env*\" \\\\\\) ! -path \"*/node_modules/*\" ! -path \"*/dist/*\" -exec grep -l \"process.env\\\\|URL\\\\|url\\\\|config\" {} \\\\;)",
+      "Bash(find \"C:\\\\ops-board\\\\infra-watch-api/src\" -type f \\\\\\( -name \"*.ts\" -o -name \"*.js\" \\\\\\) -exec grep -Hn -i \"api\\\\|url\\\\|http\\\\|fetch\\\\|axios\\\\|request\" {} \\\\;)",
+      "Bash(npm install:*)"
     ]
   }
 }

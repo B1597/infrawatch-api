@@ -1,6 +1,8 @@
+import { NodeType } from '../types/node-type.enum';
+
 export interface RawTopologyItem {
   id: string;
-  kind: 'datacenter' | 'rack' | 'server' | 'switch' | 'router' | 'storage';
+  type: NodeType;
   label: string;
   status?: string;
   state?: string;
