@@ -116,6 +116,23 @@ export class TopologyService {
     return { exists };
   }
 
+  getNodePath(id: string): string[] {
+    const node = this.topologyRaw.find((item) => item.id === id);
+    if (!node) throw new NotFoundException(`Node ${id} not found`);
+
+    const path: string[] = [];
+    let current = node;
+
+    while (current.parent) {
+      const parent = this.topologyRaw.find((item) => item.id === current.parent);
+      if (!parent) break;
+      path.unshift(parent.id);
+      current = parent;
+    }
+
+    return path;
+  }
+
   updateNodeConfig(id: string, dto: UpdateNodeConfigDto): NodeConfigDto {
     const details = (nodeDetailsRaw as NodeDetailsDto[]).find((item) => item.id === id);
     if (!details) throw new NotFoundException(`Node ${id} not found`);

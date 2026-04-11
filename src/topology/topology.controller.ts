@@ -48,6 +48,12 @@ export class TopologyController {
     return this.topologyService.getNodeDetails(id);
   }
 
+  @ApiOkResponse({ schema: { type: 'array', items: { type: 'string' } } })
+  @Get('nodes/:id/path')
+  getNodePath(@Param('id') id: string) {
+    return this.topologyService.getNodePath(id);
+  }
+
   @ApiOkResponse({ type: NodeMetricsDto })
   @Get('nodes/:id/metrics')
   getNodeMetrics(@Param('id') id: string) {
