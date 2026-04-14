@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -12,8 +7,42 @@ datasource db {
 }
 
 model Node {
-  id        String   @id @default(uuid())
-  name      String
-  type      String
+  id       String  @id @default(uuid())
+  name     String
+  type     String
+  status   String
+  parentId String?
+  location String?
+  ipAddress String?
+  floor    String?
+
+  parent   Node?   @relation("NodeHierarchy", fields: [parentId], references: [id])
+  children Node[]  @relation("NodeHierarchy")
+
+  config   NodeConfig?
+  metrics  NodeMetrics?
+
   createdAt DateTime @default(now())
+}
+
+model NodeConfig {
+  id             String  @id @default(uuid())
+  nodeId         String  @unique
+  password       String?
+  registrationId String?
+  macAddress     String?
+
+  node   Node   @relation(fields: [nodeId], references: [id])
+}
+
+model NodeMetrics {
+  id      String @id @default(uuid())
+  nodeId  String @unique
+  cpu     Float?
+  memory  Float?
+  network Float?
+  storage Float?
+  uptime  String?
+
+  node   Node   @relation(fields: [nodeId], references: [id])
 }

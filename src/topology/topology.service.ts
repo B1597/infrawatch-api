@@ -1,72 +1,70 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import topologyRaw from './data/topology.json';
 import nodeDetailsRaw from './data/node-details.json';
 import nodeMetricsRaw from './data/node-metrics.json';
-import nodeConfigRaw from './data/node-config.json';
-import { RawTopologyItem } from './interfaces/topology-item.interface';
+import { PrismaService } from '../prisma/prisma.service';
 import { DatacenterDto } from './dto/datacenter.dto';
 import { DeviceDto } from './dto/device.dto';
 import { RackDto } from './dto/rack.dto';
 import { NodeDetailsDto } from './dto/node-details.dto';
 import { NodeMetricsDto } from './dto/node-metrics.dto';
 import { NodeConfigDto, UpdateNodeConfigDto } from './dto/node-config.dto';
-import { NodeType } from './types/node-type.enum';
-
 
 @Injectable()
 export class TopologyService {
-  private readonly topologyRaw: RawTopologyItem[] = topologyRaw as RawTopologyItem[];
+  constructor(private readonly prisma: PrismaService) {}
 
-  getDatacenters(): DatacenterDto[] {
-    return this.topologyRaw
-      .filter((item) => item.type === 'datacenter')
-      .map((item) => ({
-        id: item.id,
-        name: item.label,
-        type: 'datacenter',
-        status: item.status ?? 'unknown',
-        location: item.location ?? '',
-      }));
+  async getDatacenters(): Promise<DatacenterDto[]> {
+    const nodes = await this.prisma.db.node.findMany({
+      where: { type: 'datacenter' },
+    });
+    return nodes.map((node) => ({
+      id: node.id,
+      name: node.name,
+      type: 'datacenter',
+      status: node.status,
+      location: node.location ?? '',
+    }));
   }
 
-  getRacks(datacenterId: string): RackDto[] {
-    const datacenter = this.topologyRaw.find(
-      (item) => item.type === 'datacenter' && item.id === datacenterId,
-    );
+  async getRacks(datacenterId: string): Promise<RackDto[]> {
+    const datacenter = await this.prisma.db.node.findFirst({
+      where: { id: datacenterId, type: 'datacenter' },
+    });
     if (!datacenter) throw new NotFoundException(`Datacenter ${datacenterId} not found`);
 
-    return this.topologyRaw
-      .filter((item) => item.type === 'rack' && item.parent === datacenterId)
-      .map((item) => ({
-        id: item.id,
-        name: item.label,
-        type: 'rack',
-        status: item.status ?? 'unknown',
-        location: item.meta?.floor ? `Floor ${item.meta.floor}` : '',
-        parentId: item.parent ?? '',
-      }));
+    const racks = await this.prisma.db.node.findMany({
+      where: { type: 'rack', parentId: datacenterId },
+    });
+    return racks.map((node) => ({
+      id: node.id,
+      name: node.name,
+      type: 'rack',
+      status: node.status,
+      location: node.floor ?? '',
+      parentId: node.parentId ?? '',
+    }));
   }
 
-  getDevices(rackId: string): DeviceDto[] {
-    const rack = this.topologyRaw.find(
-      (item) => item.type === 'rack' && item.id === rackId,
-    );
+  async getDevices(rackId: string): Promise<DeviceDto[]> {
+    const rack = await this.prisma.db.node.findFirst({
+      where: { id: rackId, type: 'rack' },
+    });
     if (!rack) throw new NotFoundException(`Rack ${rackId} not found`);
 
-    return this.topologyRaw
-      .filter(
-        (item) =>
-          ['server', 'switch', 'router', 'storage', 'vm', 'service'].includes(item.type) &&
-          item.parent === rackId,
-      )
-      .map((item) => ({
-        id: item.id,
-        name: item.label,
-        type: item.type as DeviceDto['type'],
-        status: item.state ?? item.status ?? 'unknown',
-        ipAddress: item.ip ?? '',
-        parentId: item.parent ?? '',
-      }));
+    const devices = await this.prisma.db.node.findMany({
+      where: {
+        type: { in: ['server', 'switch', 'router', 'storage', 'vm', 'service'] },
+        parentId: rackId,
+      },
+    });
+    return devices.map((node) => ({
+      id: node.id,
+      name: node.name,
+      type: node.type as DeviceDto['type'],
+      status: node.status,
+      ipAddress: node.ipAddress ?? '',
+      parentId: node.parentId ?? '',
+    }));
   }
 
   getNodeDetails(id: string): NodeDetailsDto {
@@ -81,50 +79,51 @@ export class TopologyService {
     return metrics;
   }
 
-  getNodeConfig(id: string): NodeConfigDto {
-    const details = (nodeDetailsRaw as NodeDetailsDto[]).find((item) => item.id === id);
-    if (!details) throw new NotFoundException(`Node ${id} not found`);
-
-    const config = (nodeConfigRaw as any[]).find((item) => item.id === id);
+  async getNodeConfig(id: string): Promise<NodeConfigDto> {
+    const node = await this.prisma.db.node.findUnique({
+      where: { id },
+      include: { config: true },
+    });
+    if (!node) throw new NotFoundException(`Node ${id} not found`);
 
     return {
-      id: details.id,
-      type: details.type,
-      name: details.name,
-      ...(details.location !== undefined && { location: details.location }),
-      ...(details.ipAddress !== undefined && { ipAddress: details.ipAddress }),
-      ...(config?.password !== undefined && { password: config.password }),
-      ...(config?.registrationId !== undefined && { registrationId: config.registrationId }),
-      ...(config?.macAddress !== undefined && { macAddress: config.macAddress }),
+      id: node.id,
+      type: node.type,
+      name: node.name,
+      ...(node.location && { location: node.location }),
+      ...(node.ipAddress && { ipAddress: node.ipAddress }),
+      ...(node.config?.password && { password: node.config.password }),
+      ...(node.config?.registrationId && { registrationId: node.config.registrationId }),
+      ...(node.config?.macAddress && { macAddress: node.config.macAddress }),
     };
   }
 
-  checkNameExists(
+  async checkNameExists(
     name: string,
     parentId?: string,
     currentId?: string,
-  ): { exists: boolean } {
-    const normalizedName = name.trim().toLowerCase();
-    const normalizedParentId = parentId?.trim() || null;
-    const normalizedCurrentId = currentId?.trim() || null;
-    const exists = this.topologyRaw.some(
-      (item) =>
-        (item.parent ?? null) === normalizedParentId &&
-        item.id !== normalizedCurrentId &&
-        item.label.trim().toLowerCase() === normalizedName,
-    );
-    return { exists };
+  ): Promise<{ exists: boolean }> {
+    const node = await this.prisma.db.node.findFirst({
+      where: {
+        name: { equals: name.trim(), mode: 'insensitive' },
+        parentId: parentId?.trim() || null,
+        ...(currentId && { NOT: { id: currentId.trim() } }),
+      },
+    });
+    return { exists: !!node };
   }
 
-  getNodePath(id: string): string[] {
-    const node = this.topologyRaw.find((item) => item.id === id);
+  async getNodePath(id: string): Promise<string[]> {
+    const node = await this.prisma.db.node.findUnique({ where: { id } });
     if (!node) throw new NotFoundException(`Node ${id} not found`);
 
     const path: string[] = [];
     let current = node;
 
-    while (current.parent) {
-      const parent = this.topologyRaw.find((item) => item.id === current.parent);
+    while (current.parentId) {
+      const parent = await this.prisma.db.node.findUnique({
+        where: { id: current.parentId },
+      });
       if (!parent) break;
       path.unshift(parent.id);
       current = parent;
@@ -133,14 +132,18 @@ export class TopologyService {
     return path;
   }
 
-  updateNodeConfig(id: string, dto: UpdateNodeConfigDto): NodeConfigDto {
-    const details = (nodeDetailsRaw as NodeDetailsDto[]).find((item) => item.id === id);
-    if (!details) throw new NotFoundException(`Node ${id} not found`);
+  async updateNodeConfig(id: string, dto: UpdateNodeConfigDto): Promise<NodeConfigDto> {
+    const node = await this.prisma.db.node.findUnique({ where: { id } });
+    if (!node) throw new NotFoundException(`Node ${id} not found`);
 
-    const config = (nodeConfigRaw as any[]).find((item) => item.id === id);
+    const config = await this.prisma.db.nodeConfig.findUnique({ where: { nodeId: id } });
     if (!config) throw new NotFoundException(`Config for node ${id} not found`);
 
-    return { ...this.getNodeConfig(id), ...dto };
-  }
+    await this.prisma.db.nodeConfig.update({
+      where: { nodeId: id },
+      data: dto,
+    });
 
+    return this.getNodeConfig(id);
+  }
 }
