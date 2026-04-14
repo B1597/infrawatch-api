@@ -7,22 +7,42 @@ datasource db {
 }
 
 model Node {
-  id       String  @id @default(uuid())
-  name     String
-  type     String
-  status   String
-  parentId String?
-  location String?
-  ipAddress String?
-  floor    String?
+  id              String  @id @default(uuid())
+  name            String
+  type            String
+  status          String
+  parentId        String?
+  location        String?
+  ipAddress       String?
+  floor           String?
+  vendor          String?
+  serialNumber    String?
+  cpuCores        Int?
+  memoryCapacity  String?
+  storageCapacity String?
+  firmware        String?
+  cpuUsage        Float?
+  memoryUsage     Float?
+  networkIO       String?
+  networkOut      String?
+  uptimeDays      Int?
+  availability    String?
 
   parent   Node?   @relation("NodeHierarchy", fields: [parentId], references: [id])
   children Node[]  @relation("NodeHierarchy")
 
-  config   NodeConfig?
   metrics  NodeMetrics?
+  config   NodeConfig?
 
   createdAt DateTime @default(now())
+}
+
+model NodeMetrics {
+  id     String @id @default(uuid())
+  nodeId String @unique
+  data   Json
+
+  node   Node   @relation(fields: [nodeId], references: [id])
 }
 
 model NodeConfig {
@@ -35,14 +55,3 @@ model NodeConfig {
   node   Node   @relation(fields: [nodeId], references: [id])
 }
 
-model NodeMetrics {
-  id      String @id @default(uuid())
-  nodeId  String @unique
-  cpu     Float?
-  memory  Float?
-  network Float?
-  storage Float?
-  uptime  String?
-
-  node   Node   @relation(fields: [nodeId], references: [id])
-}

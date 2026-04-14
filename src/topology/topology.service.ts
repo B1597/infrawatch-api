@@ -1,5 +1,4 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import nodeDetailsRaw from './data/node-details.json';
 import nodeMetricsRaw from './data/node-metrics.json';
 import { PrismaService } from '../prisma/prisma.service';
 import { DatacenterDto } from './dto/datacenter.dto';
@@ -67,16 +66,41 @@ export class TopologyService {
     }));
   }
 
-  getNodeDetails(id: string): NodeDetailsDto {
-    const details = (nodeDetailsRaw as NodeDetailsDto[]).find((item) => item.id === id);
-    if (!details) throw new NotFoundException(`Node ${id} not found`);
-    return details;
+  async getNodeDetails(id: string): Promise<NodeDetailsDto> {
+    const node = await this.prisma.db.node.findUnique({ where: { id } });
+    if (!node) throw new NotFoundException(`Node ${id} not found`);
+
+    return {
+      id: node.id,
+      name: node.name,
+      type: node.type,
+      status: node.status,
+      parentId: node.parentId ?? undefined,
+      location: node.location ?? node.floor ?? undefined,
+      ipAddress: node.ipAddress ?? undefined,
+      vendor: node.vendor ?? '',
+      serialNumber: node.serialNumber ?? '',
+      hardware: {
+        cpuCores: node.cpuCores ?? 0,
+        memory: node.memoryCapacity ?? '',
+        storage: node.storageCapacity ?? '',
+        firmware: node.firmware ?? '',
+      },
+      stats: {
+        cpuUsage: node.cpuUsage ?? 0,
+        memoryUsage: node.memoryUsage ?? 0,
+        networkIO: node.networkIO ?? '',
+        networkOut: node.networkOut ?? '',
+        uptimeDays: node.uptimeDays ?? 0,
+        availability: node.availability ?? '',
+      },
+    };
   }
 
-  getNodeMetrics(id: string): NodeMetricsDto {
-    const metrics = (nodeMetricsRaw as NodeMetricsDto[]).find((item) => item.id === id);
+  async getNodeMetrics(id: string): Promise<NodeMetricsDto> {
+    const metrics = await this.prisma.db.nodeMetrics.findUnique({ where: { nodeId: id } });
     if (!metrics) throw new NotFoundException(`Metrics for node ${id} not found`);
-    return metrics;
+    return metrics.data as unknown as NodeMetricsDto;
   }
 
   async getNodeConfig(id: string): Promise<NodeConfigDto> {
