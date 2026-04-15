@@ -114,11 +114,11 @@ export class TopologyService {
       id: node.id,
       type: node.type,
       name: node.name,
-      ...(node.location && { location: node.location }),
-      ...(node.ipAddress && { ipAddress: node.ipAddress }),
-      ...(node.config?.password && { password: node.config.password }),
-      ...(node.config?.registrationId && { registrationId: node.config.registrationId }),
-      ...(node.config?.macAddress && { macAddress: node.config.macAddress }),
+      location: node.location ?? undefined,
+      ipAddress: node.ipAddress ?? undefined,
+      password: node.config?.password ?? undefined,
+      registrationId: node.config?.registrationId ?? undefined,
+      macAddress: node.config?.macAddress ?? undefined,
     };
   }
 
@@ -137,11 +137,11 @@ export class TopologyService {
     return { exists: !!node };
   }
 
-  async getNodePath(id: string): Promise<string[]> {
+  async getNodePath(id: string): Promise<{ id: string; name: string }[]> {
     const node = await this.prisma.db.node.findUnique({ where: { id } });
     if (!node) throw new NotFoundException(`Node ${id} not found`);
 
-    const path: string[] = [];
+    const path: { id: string; name: string }[] = [];
     let current = node;
 
     while (current.parentId) {
@@ -149,7 +149,7 @@ export class TopologyService {
         where: { id: current.parentId },
       });
       if (!parent) break;
-      path.unshift(parent.id);
+      path.unshift({ id: parent.id, name: parent.name });
       current = parent;
     }
 
@@ -157,17 +157,41 @@ export class TopologyService {
   }
 
   async updateNodeConfig(id: string, dto: UpdateNodeConfigDto): Promise<NodeConfigDto> {
-    const node = await this.prisma.db.node.findUnique({ where: { id } });
-    if (!node) throw new NotFoundException(`Node ${id} not found`);
+    const nodeData = {
+      ...(dto.name !== undefined && { name: dto.name }),
+      ...(dto.location !== undefined && { location: dto.location }),
+      ...(dto.ipAddress !== undefined && { ipAddress: dto.ipAddress }),
+    };
 
-    const config = await this.prisma.db.nodeConfig.findUnique({ where: { nodeId: id } });
-    if (!config) throw new NotFoundException(`Config for node ${id} not found`);
+    const configData = {
+      ...(dto.password !== undefined && { password: dto.password }),
+      ...(dto.registrationId !== undefined && { registrationId: dto.registrationId }),
+    };
 
-    await this.prisma.db.nodeConfig.update({
-      where: { nodeId: id },
-      data: dto,
+    const node = await this.prisma.db.node.update({
+      where: { id },
+      data: {
+        ...nodeData,
+        ...(Object.keys(configData).length > 0 && {
+          config: {
+            upsert: {
+              update: configData,
+              create: configData,
+            },
+          },
+        }),
+      },
+      include: { config: true },
     });
 
-    return this.getNodeConfig(id);
+    return {
+      id: node.id,
+      type: node.type,
+      name: node.name,
+      location: node.location ?? undefined,
+      ipAddress: node.ipAddress ?? undefined,
+      password: node.config?.password ?? undefined,
+      registrationId: node.config?.registrationId ?? undefined,
+    };
   }
 }

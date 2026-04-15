@@ -1,4 +1,4 @@
-import { Controller, Get, Put, Param, Body, Query } from '@nestjs/common';
+import { Controller, Get, Patch, Param, Body, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CheckNameDto } from './dto/check-name.dto';
 import { DatacenterDto } from './dto/datacenter.dto';
@@ -48,7 +48,7 @@ export class TopologyController {
     return this.topologyService.getNodeDetails(id);
   }
 
-  @ApiOkResponse({ schema: { type: 'array', items: { type: 'string' } } })
+  @ApiOkResponse({ schema: { type: 'array', items: { type: 'object', properties: { id: { type: 'string' }, name: { type: 'string' } } } } })
   @Get('nodes/:id/path')
   getNodePath(@Param('id') id: string) {
     return this.topologyService.getNodePath(id);
@@ -67,7 +67,7 @@ export class TopologyController {
   }
 
   @ApiOkResponse({ type: NodeConfigDto })
-  @Put('nodes/:id/config')
+  @Patch('nodes/:id/config')
   updateNodeConfig(@Param('id') id: string, @Body() dto: UpdateNodeConfigDto) {
     return this.topologyService.updateNodeConfig(id, dto);
   }
