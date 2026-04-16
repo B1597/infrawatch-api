@@ -32,6 +32,8 @@ async function main() {
         firmware: details?.hardware?.firmware ?? null,
         cpuUsage: details?.stats?.cpuUsage ?? null,
         memoryUsage: details?.stats?.memoryUsage ?? null,
+        networkUsage: details?.stats?.networkUsage ?? null,
+        storageUsage: details?.stats?.storageUsage ?? null,
         networkIO: details?.stats?.networkIO ?? null,
         networkOut: details?.stats?.networkOut ?? null,
         uptimeDays: details?.stats?.uptimeDays ?? null,

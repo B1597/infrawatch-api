@@ -58,3 +58,12 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Prisma generated client
 src/generated/prisma
+
+# Prisma compiled output
+prisma/seed.js
+prisma/seed.js.map
+prisma.config.js
+prisma.config.js.map
+
+# TypeScript build info
+tsconfig.build.tsbuildinfo

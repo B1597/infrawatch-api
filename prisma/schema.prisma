@@ -23,6 +23,8 @@ model Node {
   firmware        String?
   cpuUsage        Float?
   memoryUsage     Float?
+  networkUsage    Float?
+  storageUsage    Float?
   networkIO       String?
   networkOut      String?
   uptimeDays      Int?
