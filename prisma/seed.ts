@@ -4,6 +4,7 @@ import topologyRaw from '../src/topology/data/topology.json';
 import nodeConfigRaw from '../src/topology/data/node-config.json';
 import nodeDetailsRaw from '../src/topology/data/node-details.json';
 import nodeMetricsRaw from '../src/topology/data/node-metrics.json';
+import alertsRaw from '../src/alerts/data/alerts.json';
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
@@ -83,6 +84,22 @@ async function main() {
         },
       });
     }
+  }
+
+  for (const alert of alertsRaw) {
+    await prisma.alert.create({
+      data: {
+        title: alert.title,
+        message: alert.message,
+        severity: alert.severity,
+        status: alert.status,
+        source: alert.source,
+        deviceType: alert.deviceType,
+        category: alert.category,
+        timestamp: new Date(alert.timestamp),
+        acknowledgedBy: alert.acknowledgedBy ?? null,
+      },
+    });
   }
 
   console.log('Seeding complete');

@@ -1,18 +1,45 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import alertsRaw from './data/alerts.json';
 import { AlertDto } from './dto/alert.dto';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class AlertsService {
-  private readonly alerts: AlertDto[] = alertsRaw as AlertDto[];
+  constructor(private readonly prisma: PrismaService) {}
 
-  getAlerts(): AlertDto[] {
-    return this.alerts;
+  async getAlerts(): Promise<AlertDto[]> {
+    return this.prisma.db.alert.findMany({
+      orderBy: { timestamp: 'desc' },
+    });
   }
 
-  getAlertById(id: string): AlertDto {
-    const alert = this.alerts.find((alert) => alert.id === id);
+  async getAlertById(id: string): Promise<AlertDto> {
+    const alert = await this.prisma.db.alert.findUnique({ where: { id } });
     if (!alert) throw new NotFoundException(`Alert ${id} not found`);
     return alert;
+  }
+
+  async acknowledgeAlert(id: string): Promise<AlertDto> {
+    const alert = await this.prisma.db.alert.findUnique({ where: { id } });
+    if (!alert) throw new NotFoundException(`Alert ${id} not found`);
+
+    return this.prisma.db.alert.update({
+      where: { id },
+      data: {
+        status: 'acknowledged',
+        acknowledgedBy: 'admin',
+      },
+    });
+  }
+
+  async resolveAlert(id: string): Promise<AlertDto> {
+    const alert = await this.prisma.db.alert.findUnique({ where: { id } });
+    if (!alert) throw new NotFoundException(`Alert ${id} not found`);
+
+    return this.prisma.db.alert.update({
+      where: { id },
+      data: {
+        status: 'resolved',
+      },
+    });
   }
 }

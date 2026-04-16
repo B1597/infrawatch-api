@@ -57,3 +57,17 @@ model NodeConfig {
   node   Node   @relation(fields: [nodeId], references: [id])
 }
 
+
+model Alert {
+  id             String   @id @default(uuid())
+  title          String
+  message        String
+  severity       String   // 'critical' | 'warning' | 'info'
+  status         String   // 'active' | 'acknowledged' | 'resolved'
+  source         String
+  deviceType     String
+  category       String
+  timestamp      DateTime
+  acknowledgedBy String?
+  createdAt      DateTime @default(now())
+}
