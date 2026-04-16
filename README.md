@@ -1,98 +1,97 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# InfraWatch API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Backend service for InfraWatch — an infrastructure monitoring system for managing datacenters, racks, servers, and network devices.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Live Demo
 
-## Description
+- **Swagger UI:** https://infrawatch-api-d94p.onrender.com/api
+- **OpenAPI JSON:** https://infrawatch-api-d94p.onrender.com/api-json
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+> Note: hosted on Render free tier — first request may take ~30 seconds if the service is sleeping.
 
-## Project setup
+## Tech Stack
 
-```bash
-$ npm install
-```
+- **NestJS** — Node.js framework
+- **PostgreSQL** — database (hosted on Neon)
+- **Prisma** — ORM and migrations
+- **Jest** — unit testing
+- **GitHub Actions** — CI/CD pipeline
+- **Render** — deployment
 
-## Compile and run the project
+## Features
 
-```bash
-# development
-$ npm run start
+- Hierarchical topology API (datacenters → racks → devices)
+- Node details and basic configuration via GET/PATCH endpoints
+- Node metrics and details retrieval
+- Aggregated dashboard statistics (health and utilization)
+- Alerts system with acknowledge / resolve workflow
+- Swagger API documentation
+- Unit testing with mocked Prisma layer
+- CI/CD with automated deployment
 
-# watch mode
-$ npm run start:dev
+## Architecture
 
-# production mode
-$ npm run start:prod
-```
+- Layered structure: Controller → Service → Prisma
+- DTO-based validation and response shaping
+- Self-referencing Node hierarchy for topology (datacenter → rack → device)
 
-## Run tests
+## Real-World Context
 
-```bash
-# unit tests
-$ npm run test
+In a production setup, this API would receive data from distributed agents running on devices (servers, network equipment). These agents would periodically send metrics and status updates, which are stored and exposed via the API for monitoring and visualization.
 
-# e2e tests
-$ npm run test:e2e
+## Data Model
 
-# test coverage
-$ npm run test:cov
-```
+- `Node` — core entity representing datacenters, racks, and devices (self-referencing hierarchy)
+- `NodeConfig` — configuration data per node (credentials, identifiers)
+- `NodeMetrics` — performance metrics per node (CPU, memory, network, uptime)
+- `Alert` — system alerts with acknowledgment and resolution flow
 
-## Deployment
+## Getting Started
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### Prerequisites
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+- Node.js 22+
+- PostgreSQL database
+- Copy `.env.example` to `.env` and fill in your values
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+cp .env.example .env
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Install & Run
 
-## Resources
+```bash
+npm install
+npx prisma generate
+npx prisma migrate deploy
+npx prisma db seed
+npm run start:dev
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+### Run Tests
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+npm test
+```
 
-## Support
+### Swagger
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Once running locally, open:
 
-## Stay in touch
+```
+http://localhost:3000/api
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Environment Variables
 
-## License
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string |
+| `PORT` | Port to listen on (default: 3000) |
+| `CORS_ORIGIN` | Allowed frontend origin |
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## CI/CD
+
+On every push to `develop`:
+1. GitHub Actions runs unit tests
+2. If tests pass, triggers a deploy to Render automatically
