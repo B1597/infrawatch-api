@@ -46,6 +46,10 @@ In a production setup, this API would receive data from distributed agents runni
 - `NodeMetrics` — performance metrics per node (CPU, memory, network, uptime)
 - `Alert` — system alerts with acknowledgment and resolution flow
 
+## Frontend
+
+- **Repository:** https://github.com/B1597/infra-watch
+
 ## Getting Started
 
 ### Prerequisites
