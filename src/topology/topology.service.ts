@@ -1,5 +1,4 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import nodeMetricsRaw from './data/node-metrics.json';
 import { PrismaService } from '../prisma/prisma.service';
 import { DatacenterDto } from './dto/datacenter.dto';
 import { DeviceDto } from './dto/device.dto';
