@@ -7,6 +7,8 @@ import { NodeConfigDto, UpdateNodeConfigDto } from './dto/node-config.dto';
 import { NodeDetailsDto } from './dto/node-details.dto';
 import { NodeMetricsDto } from './dto/node-metrics.dto';
 import { RackDto } from './dto/rack.dto';
+import { SearchNodesDto } from './dto/search-nodes.dto';
+import { NodePathDto, SearchResultDto } from './dto/search-result.dto';
 import { TopologyService } from './topology.service';
 
 @ApiTags('topology')
@@ -32,6 +34,12 @@ export class TopologyController {
     return this.topologyService.getDevices(id);
   }
 
+  @ApiOkResponse({ type: [SearchResultDto] })
+  @Get('nodes/search')
+  searchNodes(@Query() query: SearchNodesDto) {
+    return this.topologyService.searchNodes(query.q);
+  }
+
   @ApiOkResponse({ schema: { properties: { exists: { type: 'boolean' } } } })
   @Get('nodes/check-name')
   checkNameExists(@Query() query: CheckNameDto) {
@@ -48,7 +56,7 @@ export class TopologyController {
     return this.topologyService.getNodeDetails(id);
   }
 
-  @ApiOkResponse({ schema: { type: 'array', items: { type: 'object', properties: { id: { type: 'string' }, name: { type: 'string' } } } } })
+  @ApiOkResponse({ type: [NodePathDto] })
   @Get('nodes/:id/path')
   getNodePath(@Param('id') id: string) {
     return this.topologyService.getNodePath(id);

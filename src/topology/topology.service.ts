@@ -7,6 +7,7 @@ import { RackDto } from './dto/rack.dto';
 import { NodeDetailsDto } from './dto/node-details.dto';
 import { NodeMetricsDto } from './dto/node-metrics.dto';
 import { NodeConfigDto, UpdateNodeConfigDto } from './dto/node-config.dto';
+import { NodePathDto, SearchResultDto } from './dto/search-result.dto';
 
 @Injectable()
 export class TopologyService {
@@ -137,23 +138,38 @@ export class TopologyService {
     return { exists: !!node };
   }
 
-  async getNodePath(id: string): Promise<{ id: string; name: string }[]> {
+  async getNodePath(id: string): Promise<NodePathDto[]> {
     const node = await this.prisma.db.node.findUnique({ where: { id } });
     if (!node) throw new NotFoundException(`Node ${id} not found`);
 
-    const path: { id: string; name: string }[] = [];
+    const path: NodePathDto[] = [];
     let current = node;
 
     while (current.parentId) {
-      const parent = await this.prisma.db.node.findUnique({
-        where: { id: current.parentId },
-      });
+      const parent = await this.prisma.db.node.findUnique({ where: { id: current.parentId } });
       if (!parent) break;
-      path.unshift({ id: parent.id, name: parent.name });
+      path.unshift({ id: parent.id, name: parent.name, type: parent.type });
       current = parent;
     }
 
     return path;
+  }
+
+  async searchNodes(q: string): Promise<SearchResultDto[]> {
+    const matches = await this.prisma.db.node.findMany({
+      where: { name: { contains: q.trim(), mode: 'insensitive' } },
+    });
+
+    return Promise.all(
+      matches.map(async (node) => ({
+        id: node.id,
+        name: node.name,
+        type: node.type,
+        status: node.status,
+        parentId: node.parentId ?? undefined,
+        path: await this.getNodePath(node.id),
+      })),
+    );
   }
 
   async updateNodeConfig(id: string, dto: UpdateNodeConfigDto): Promise<NodeConfigDto> {
