@@ -18,8 +18,13 @@ async function bootstrap() {
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
 
+  const allowedOrigins = (
+  process.env.CORS_ORIGIN ?? 'http://localhost:4200,https://infra-watch-eta.vercel.app')
+  .split(',')
+  .map(origin => origin.trim());
+
   app.enableCors({
-    origin: process.env.CORS_ORIGIN ?? 'http://localhost:4200',
+    origin: allowedOrigins,
   });
 
   await app.listen(process.env.PORT ?? 3000);
