@@ -10,6 +10,11 @@ const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
+  await prisma.nodeMetrics.deleteMany();
+  await prisma.nodeConfig.deleteMany();
+  await prisma.alert.deleteMany();
+  await prisma.node.deleteMany();
+
   // old string IDs (e.g. "dc-west") → new UUIDs, needed to link parents and configs
   const idMap = new Map<string, string>();
 

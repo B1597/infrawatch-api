@@ -30,7 +30,7 @@ model Node {
   uptimeDays      Int?
   availability    String?
 
-  parent   Node?   @relation("NodeHierarchy", fields: [parentId], references: [id])
+  parent   Node?   @relation("NodeHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
   children Node[]  @relation("NodeHierarchy")
 
   metrics  NodeMetrics?
@@ -44,7 +44,7 @@ model NodeMetrics {
   nodeId String @unique
   data   Json
 
-  node   Node   @relation(fields: [nodeId], references: [id])
+  node   Node   @relation(fields: [nodeId], references: [id], onDelete: Cascade)
 }
 
 model NodeConfig {
@@ -54,7 +54,7 @@ model NodeConfig {
   registrationId String?
   macAddress     String?
 
-  node   Node   @relation(fields: [nodeId], references: [id])
+  node   Node   @relation(fields: [nodeId], references: [id], onDelete: Cascade)
 }
 
 

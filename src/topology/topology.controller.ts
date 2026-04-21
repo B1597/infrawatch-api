@@ -1,4 +1,4 @@
-import { Controller, Get, Patch, Param, Body, Query } from '@nestjs/common';
+import { Controller, Get, Patch, Param, Body, Query, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CheckNameDto } from './dto/check-name.dto';
 import { DatacenterDto } from './dto/datacenter.dto';
@@ -50,12 +50,6 @@ export class TopologyController {
     );
   }
 
-  @ApiOkResponse({ type: NodeDetailsDto })
-  @Get('nodes/:id')
-  getNodeDetails(@Param('id') id: string) {
-    return this.topologyService.getNodeDetails(id);
-  }
-
   @ApiOkResponse({ type: [NodePathDto] })
   @Get('nodes/:id/path')
   getNodePath(@Param('id') id: string) {
@@ -79,4 +73,17 @@ export class TopologyController {
   updateNodeConfig(@Param('id') id: string, @Body() dto: UpdateNodeConfigDto) {
     return this.topologyService.updateNodeConfig(id, dto);
   }
+
+  @ApiOkResponse({ type: NodeDetailsDto })
+  @Get('nodes/:id')
+  getNodeDetails(@Param('id') id: string) {
+    return this.topologyService.getNodeDetails(id);
+  }
+
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @Delete('nodes/:id')
+  deleteNode(@Param('id') id: string) {
+    return this.topologyService.deleteNode(id);
+  }
+  
 }

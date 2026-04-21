@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { DatacenterDto } from './dto/datacenter.dto';
 import { DeviceDto } from './dto/device.dto';
@@ -208,5 +208,21 @@ export class TopologyService {
       password: node.config?.password ?? undefined,
       registrationId: node.config?.registrationId ?? undefined,
     };
+  }
+
+  async deleteNode(id: string): Promise<void> {
+    const node = await this.prisma.db.node.findUnique({
+      where: { id },
+      select: { id: true, type: true },
+    });
+
+    if (!node) {
+      throw new NotFoundException(`Node ${id} not found`);
+    }
+    if (node.type === 'datacenter') {
+      throw new BadRequestException('Datacenters cannot be deleted');
+    }
+
+    await this.prisma.db.node.delete({ where: { id } });
   }
 }
