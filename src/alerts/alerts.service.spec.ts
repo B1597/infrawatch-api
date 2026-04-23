@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException } from '@nestjs/common';
 import { AlertsService } from './alerts.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { AlertsGateway } from './alerts.gateway';
 
 const mockAlert = {
   id: 'abc-123',
@@ -16,12 +17,21 @@ const mockAlert = {
   acknowledgedBy: null,
 };
 
+const mockAlertsGateway = {
+  emitNewAlert: jest.fn(),
+  emitAlertUpdated: jest.fn(),
+};
+
 const mockPrismaService = {
   db: {
     alert: {
       findMany: jest.fn(),
       findUnique: jest.fn(),
+      findFirst: jest.fn(),
+      create: jest.fn(),
       update: jest.fn(),
+      delete: jest.fn(),
+      count: jest.fn().mockResolvedValue(0),
     },
   },
 };
@@ -34,6 +44,7 @@ describe('AlertsService', () => {
       providers: [
         AlertsService,
         { provide: PrismaService, useValue: mockPrismaService },
+        { provide: AlertsGateway, useValue: mockAlertsGateway },
       ],
     }).compile();
 
