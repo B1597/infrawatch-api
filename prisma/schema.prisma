@@ -29,6 +29,7 @@ model Node {
   networkOut      String?
   uptimeDays      Int?
   availability    String?
+  alerts   Alert[]
 
   parent   Node?   @relation("NodeHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
   children Node[]  @relation("NodeHierarchy")
@@ -70,4 +71,7 @@ model Alert {
   timestamp      DateTime
   acknowledgedBy String?
   createdAt      DateTime @default(now())
+  nodeId         String?
+
+  node    Node?   @relation(fields: [nodeId], references: [id], onDelete: SetNull)
 }

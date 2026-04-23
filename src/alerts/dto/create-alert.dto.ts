@@ -1,9 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class AlertDto {
-  @ApiProperty()
-  id!: string;
-
+export class CreateAlertDto {
   @ApiProperty()
   title!: string;
 
@@ -12,9 +9,6 @@ export class AlertDto {
 
   @ApiProperty()
   severity!: string;
-
-  @ApiProperty()
-  status!: string;
 
   @ApiProperty()
   source!: string;
@@ -27,9 +21,6 @@ export class AlertDto {
 
   @ApiProperty()
   timestamp!: Date;
-
-  @ApiProperty({ required: false, nullable: true })
-  acknowledgedBy?: string | null;
 
   @ApiProperty({ required: false, nullable: true })
   nodeId?: string | null;

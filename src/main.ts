@@ -3,10 +3,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { IoAdapter } from '@nestjs/platform-socket.io';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.useWebSocketAdapter(new IoAdapter(app));
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
   const config = new DocumentBuilder()
@@ -19,9 +21,11 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, documentFactory);
 
   const allowedOrigins = (
-  process.env.CORS_ORIGIN ?? 'http://localhost:4200,https://infra-watch-eta.vercel.app')
-  .split(',')
-  .map(origin => origin.trim());
+    process.env.CORS_ORIGIN ??
+    'http://localhost:4200,http://localhost:5173,https://infra-watch-eta.vercel.app'
+  )
+    .split(',')
+    .map((origin) => origin.trim());
 
   app.enableCors({
     origin: allowedOrigins,
