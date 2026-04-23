@@ -3025,5 +3025,733 @@
       "networkUsage": 63,
       "storageUsage": 94
     }
+  },
+  {
+    "id": "vm-w1-01",
+    "name": "VM W1-A",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.0.1.101",
+    "parentId": "rack-w1",
+    "vendor": "VMware",
+    "serialNumber": "VM-W1-01",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 62,
+      "memoryUsage": 71,
+      "networkIO": "45 MB/s",
+      "networkOut": "12 MB/s",
+      "uptimeDays": 30,
+      "availability": "99.5%",
+      "networkUsage": 55,
+      "storageUsage": 68
+    }
+  },
+  {
+    "id": "vm-w1-02",
+    "name": "VM W1-B",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.0.1.102",
+    "parentId": "rack-w1",
+    "vendor": "VMware",
+    "serialNumber": "VM-W1-02",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 88,
+      "memoryUsage": 82,
+      "networkIO": "38 MB/s",
+      "networkOut": "9 MB/s",
+      "uptimeDays": 28,
+      "availability": "99.1%",
+      "networkUsage": 72,
+      "storageUsage": 91
+    }
+  },
+  {
+    "id": "vm-e1-01",
+    "name": "VM E1-A",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.1.1.101",
+    "parentId": "rack-e1",
+    "vendor": "VMware",
+    "serialNumber": "VM-E1-01",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 45,
+      "memoryUsage": 58,
+      "networkIO": "52 MB/s",
+      "networkOut": "14 MB/s",
+      "uptimeDays": 60,
+      "availability": "99.8%",
+      "networkUsage": 48,
+      "storageUsage": 55
+    }
+  },
+  {
+    "id": "vm-e1-02",
+    "name": "VM E1-B",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.1.1.102",
+    "parentId": "rack-e1",
+    "vendor": "VMware",
+    "serialNumber": "VM-E1-02",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 33,
+      "memoryUsage": 44,
+      "networkIO": "28 MB/s",
+      "networkOut": "7 MB/s",
+      "uptimeDays": 55,
+      "availability": "99.9%",
+      "networkUsage": 35,
+      "storageUsage": 42
+    }
+  },
+  {
+    "id": "vm-eu1-01",
+    "name": "VM EU1-A",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.2.1.101",
+    "parentId": "rack-eu1",
+    "vendor": "VMware",
+    "serialNumber": "VM-EU1-01",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 76,
+      "memoryUsage": 68,
+      "networkIO": "41 MB/s",
+      "networkOut": "11 MB/s",
+      "uptimeDays": 22,
+      "availability": "99.3%",
+      "networkUsage": 63,
+      "storageUsage": 74
+    }
+  },
+  {
+    "id": "vm-eu1-02",
+    "name": "VM EU1-B",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.2.1.102",
+    "parentId": "rack-eu1",
+    "vendor": "VMware",
+    "serialNumber": "VM-EU1-02",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 91,
+      "memoryUsage": 87,
+      "networkIO": "33 MB/s",
+      "networkOut": "8 MB/s",
+      "uptimeDays": 18,
+      "availability": "98.9%",
+      "networkUsage": 81,
+      "storageUsage": 93
+    }
+  },
+  {
+    "id": "vm-sg1-01",
+    "name": "VM SG1-A",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.3.1.101",
+    "parentId": "rack-sg1",
+    "vendor": "VMware",
+    "serialNumber": "VM-SG1-01",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 41,
+      "memoryUsage": 53,
+      "networkIO": "61 MB/s",
+      "networkOut": "16 MB/s",
+      "uptimeDays": 90,
+      "availability": "99.9%",
+      "networkUsage": 44,
+      "storageUsage": 49
+    }
+  },
+  {
+    "id": "vm-sg1-02",
+    "name": "VM SG1-B",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.3.1.102",
+    "parentId": "rack-sg1",
+    "vendor": "VMware",
+    "serialNumber": "VM-SG1-02",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 58,
+      "memoryUsage": 65,
+      "networkIO": "44 MB/s",
+      "networkOut": "11 MB/s",
+      "uptimeDays": 85,
+      "availability": "99.7%",
+      "networkUsage": 57,
+      "storageUsage": 63
+    }
+  },
+  {
+    "id": "vm-tk1-01",
+    "name": "VM TK1-A",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.4.1.101",
+    "parentId": "rack-tk1",
+    "vendor": "VMware",
+    "serialNumber": "VM-TK1-01",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 37,
+      "memoryUsage": 49,
+      "networkIO": "55 MB/s",
+      "networkOut": "13 MB/s",
+      "uptimeDays": 70,
+      "availability": "99.8%",
+      "networkUsage": 41,
+      "storageUsage": 52
+    }
+  },
+  {
+    "id": "vm-tk1-02",
+    "name": "VM TK1-B",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.4.1.102",
+    "parentId": "rack-tk1",
+    "vendor": "VMware",
+    "serialNumber": "VM-TK1-02",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 83,
+      "memoryUsage": 79,
+      "networkIO": "37 MB/s",
+      "networkOut": "9 MB/s",
+      "uptimeDays": 65,
+      "availability": "99.4%",
+      "networkUsage": 76,
+      "storageUsage": 88
+    }
+  },
+  {
+    "id": "vm-uk1-01",
+    "name": "VM UK1-A",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.5.1.101",
+    "parentId": "rack-uk1",
+    "vendor": "VMware",
+    "serialNumber": "VM-UK1-01",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 54,
+      "memoryUsage": 61,
+      "networkIO": "49 MB/s",
+      "networkOut": "13 MB/s",
+      "uptimeDays": 40,
+      "availability": "99.6%",
+      "networkUsage": 52,
+      "storageUsage": 67
+    }
+  },
+  {
+    "id": "vm-uk1-02",
+    "name": "VM UK1-B",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.5.1.102",
+    "parentId": "rack-uk1",
+    "vendor": "VMware",
+    "serialNumber": "VM-UK1-02",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 29,
+      "memoryUsage": 38,
+      "networkIO": "31 MB/s",
+      "networkOut": "8 MB/s",
+      "uptimeDays": 38,
+      "availability": "99.9%",
+      "networkUsage": 33,
+      "storageUsage": 41
+    }
+  },
+  {
+    "id": "vm-aus1-01",
+    "name": "VM AUS1-A",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.7.1.101",
+    "parentId": "rack-aus1",
+    "vendor": "VMware",
+    "serialNumber": "VM-AUS1-01",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 47,
+      "memoryUsage": 55,
+      "networkIO": "42 MB/s",
+      "networkOut": "11 MB/s",
+      "uptimeDays": 50,
+      "availability": "99.7%",
+      "networkUsage": 46,
+      "storageUsage": 58
+    }
+  },
+  {
+    "id": "vm-aus1-02",
+    "name": "VM AUS1-B",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.7.1.102",
+    "parentId": "rack-aus1",
+    "vendor": "VMware",
+    "serialNumber": "VM-AUS1-02",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 72,
+      "memoryUsage": 76,
+      "networkIO": "35 MB/s",
+      "networkOut": "9 MB/s",
+      "uptimeDays": 47,
+      "availability": "99.5%",
+      "networkUsage": 68,
+      "storageUsage": 79
+    }
+  },
+  {
+    "id": "vm-nl1-01",
+    "name": "VM NL1-A",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.11.1.101",
+    "parentId": "rack-nl1",
+    "vendor": "VMware",
+    "serialNumber": "VM-NL1-01",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 43,
+      "memoryUsage": 51,
+      "networkIO": "58 MB/s",
+      "networkOut": "15 MB/s",
+      "uptimeDays": 75,
+      "availability": "99.8%",
+      "networkUsage": 47,
+      "storageUsage": 54
+    }
+  },
+  {
+    "id": "vm-nl1-02",
+    "name": "VM NL1-B",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.11.1.102",
+    "parentId": "rack-nl1",
+    "vendor": "VMware",
+    "serialNumber": "VM-NL1-02",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 86,
+      "memoryUsage": 84,
+      "networkIO": "29 MB/s",
+      "networkOut": "7 MB/s",
+      "uptimeDays": 72,
+      "availability": "99.2%",
+      "networkUsage": 79,
+      "storageUsage": 92
+    }
+  },
+  {
+    "id": "vm-kr1-01",
+    "name": "VM KR1-A",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.14.1.101",
+    "parentId": "rack-kr1",
+    "vendor": "VMware",
+    "serialNumber": "VM-KR1-01",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 39,
+      "memoryUsage": 47,
+      "networkIO": "53 MB/s",
+      "networkOut": "14 MB/s",
+      "uptimeDays": 80,
+      "availability": "99.9%",
+      "networkUsage": 42,
+      "storageUsage": 51
+    }
+  },
+  {
+    "id": "vm-kr1-02",
+    "name": "VM KR1-B",
+    "type": "vm",
+    "status": "online",
+    "ipAddress": "10.14.1.102",
+    "parentId": "rack-kr1",
+    "vendor": "VMware",
+    "serialNumber": "VM-KR1-02",
+    "hardware": {
+      "cpuCores": 8,
+      "memory": "32 GB",
+      "storage": "500 GB",
+      "firmware": "ESXi 8.0"
+    },
+    "stats": {
+      "cpuUsage": 67,
+      "memoryUsage": 73,
+      "networkIO": "36 MB/s",
+      "networkOut": "9 MB/s",
+      "uptimeDays": 78,
+      "availability": "99.6%",
+      "networkUsage": 64,
+      "storageUsage": 77
+    }
+  },
+  {
+    "id": "svc-w1-01",
+    "name": "Auth Service W1",
+    "type": "service",
+    "status": "online",
+    "ipAddress": "10.0.1.201",
+    "parentId": "rack-w1",
+    "vendor": "Custom",
+    "serialNumber": "SVC-W1-01",
+    "hardware": {
+      "cpuCores": 4,
+      "memory": "16 GB",
+      "storage": "100 GB",
+      "firmware": "N/A"
+    },
+    "stats": {
+      "cpuUsage": 28,
+      "memoryUsage": 41,
+      "networkIO": "12 MB/s",
+      "networkOut": "8 MB/s",
+      "uptimeDays": 90,
+      "availability": "99.99%",
+      "networkUsage": 31,
+      "storageUsage": 22
+    }
+  },
+  {
+    "id": "svc-w2-01",
+    "name": "API Gateway W2",
+    "type": "service",
+    "status": "online",
+    "ipAddress": "10.0.2.201",
+    "parentId": "rack-w2",
+    "vendor": "Custom",
+    "serialNumber": "SVC-W2-01",
+    "hardware": {
+      "cpuCores": 4,
+      "memory": "16 GB",
+      "storage": "100 GB",
+      "firmware": "N/A"
+    },
+    "stats": {
+      "cpuUsage": 93,
+      "memoryUsage": 55,
+      "networkIO": "88 MB/s",
+      "networkOut": "44 MB/s",
+      "uptimeDays": 88,
+      "availability": "99.9%",
+      "networkUsage": 85,
+      "storageUsage": 34
+    }
+  },
+  {
+    "id": "svc-e1-01",
+    "name": "Auth Service E1",
+    "type": "service",
+    "status": "online",
+    "ipAddress": "10.1.1.201",
+    "parentId": "rack-e1",
+    "vendor": "Custom",
+    "serialNumber": "SVC-E1-01",
+    "hardware": {
+      "cpuCores": 4,
+      "memory": "16 GB",
+      "storage": "100 GB",
+      "firmware": "N/A"
+    },
+    "stats": {
+      "cpuUsage": 31,
+      "memoryUsage": 44,
+      "networkIO": "14 MB/s",
+      "networkOut": "9 MB/s",
+      "uptimeDays": 120,
+      "availability": "99.99%",
+      "networkUsage": 34,
+      "storageUsage": 25
+    }
+  },
+  {
+    "id": "svc-sg1-01",
+    "name": "API Gateway SG1",
+    "type": "service",
+    "status": "online",
+    "ipAddress": "10.3.1.201",
+    "parentId": "rack-sg1",
+    "vendor": "Custom",
+    "serialNumber": "SVC-SG1-01",
+    "hardware": {
+      "cpuCores": 4,
+      "memory": "16 GB",
+      "storage": "100 GB",
+      "firmware": "N/A"
+    },
+    "stats": {
+      "cpuUsage": 44,
+      "memoryUsage": 52,
+      "networkIO": "66 MB/s",
+      "networkOut": "33 MB/s",
+      "uptimeDays": 95,
+      "availability": "99.9%",
+      "networkUsage": 58,
+      "storageUsage": 29
+    }
+  },
+  {
+    "id": "svc-eu1-01",
+    "name": "Auth Service EU1",
+    "type": "service",
+    "status": "online",
+    "ipAddress": "10.2.1.201",
+    "parentId": "rack-eu1",
+    "vendor": "Custom",
+    "serialNumber": "SVC-EU1-01",
+    "hardware": {
+      "cpuCores": 4,
+      "memory": "16 GB",
+      "storage": "100 GB",
+      "firmware": "N/A"
+    },
+    "stats": {
+      "cpuUsage": 87,
+      "memoryUsage": 91,
+      "networkIO": "19 MB/s",
+      "networkOut": "11 MB/s",
+      "uptimeDays": 14,
+      "availability": "98.5%",
+      "networkUsage": 77,
+      "storageUsage": 45
+    }
+  },
+  {
+    "id": "svc-tk1-01",
+    "name": "API Gateway TK1",
+    "type": "service",
+    "status": "online",
+    "ipAddress": "10.4.1.201",
+    "parentId": "rack-tk1",
+    "vendor": "Custom",
+    "serialNumber": "SVC-TK1-01",
+    "hardware": {
+      "cpuCores": 4,
+      "memory": "16 GB",
+      "storage": "100 GB",
+      "firmware": "N/A"
+    },
+    "stats": {
+      "cpuUsage": 38,
+      "memoryUsage": 47,
+      "networkIO": "71 MB/s",
+      "networkOut": "36 MB/s",
+      "uptimeDays": 70,
+      "availability": "99.9%",
+      "networkUsage": 62,
+      "storageUsage": 31
+    }
+  },
+  {
+    "id": "svc-uk1-01",
+    "name": "Auth Service UK1",
+    "type": "service",
+    "status": "online",
+    "ipAddress": "10.5.1.201",
+    "parentId": "rack-uk1",
+    "vendor": "Custom",
+    "serialNumber": "SVC-UK1-01",
+    "hardware": {
+      "cpuCores": 4,
+      "memory": "16 GB",
+      "storage": "100 GB",
+      "firmware": "N/A"
+    },
+    "stats": {
+      "cpuUsage": 25,
+      "memoryUsage": 38,
+      "networkIO": "11 MB/s",
+      "networkOut": "7 MB/s",
+      "uptimeDays": 40,
+      "availability": "99.99%",
+      "networkUsage": 28,
+      "storageUsage": 19
+    }
+  },
+  {
+    "id": "svc-aus1-01",
+    "name": "API Gateway AUS1",
+    "type": "service",
+    "status": "online",
+    "ipAddress": "10.7.1.201",
+    "parentId": "rack-aus1",
+    "vendor": "Custom",
+    "serialNumber": "SVC-AUS1-01",
+    "hardware": {
+      "cpuCores": 4,
+      "memory": "16 GB",
+      "storage": "100 GB",
+      "firmware": "N/A"
+    },
+    "stats": {
+      "cpuUsage": 51,
+      "memoryUsage": 59,
+      "networkIO": "64 MB/s",
+      "networkOut": "32 MB/s",
+      "uptimeDays": 50,
+      "availability": "99.8%",
+      "networkUsage": 67,
+      "storageUsage": 38
+    }
+  },
+  {
+    "id": "svc-nl1-01",
+    "name": "Auth Service NL1",
+    "type": "service",
+    "status": "online",
+    "ipAddress": "10.11.1.201",
+    "parentId": "rack-nl1",
+    "vendor": "Custom",
+    "serialNumber": "SVC-NL1-01",
+    "hardware": {
+      "cpuCores": 4,
+      "memory": "16 GB",
+      "storage": "100 GB",
+      "firmware": "N/A"
+    },
+    "stats": {
+      "cpuUsage": 34,
+      "memoryUsage": 43,
+      "networkIO": "13 MB/s",
+      "networkOut": "8 MB/s",
+      "uptimeDays": 75,
+      "availability": "99.99%",
+      "networkUsage": 36,
+      "storageUsage": 23
+    }
+  },
+  {
+    "id": "svc-kr1-01",
+    "name": "Monitoring Service KR1",
+    "type": "service",
+    "status": "online",
+    "ipAddress": "10.14.1.201",
+    "parentId": "rack-kr1",
+    "vendor": "Custom",
+    "serialNumber": "SVC-KR1-01",
+    "hardware": {
+      "cpuCores": 4,
+      "memory": "16 GB",
+      "storage": "100 GB",
+      "firmware": "N/A"
+    },
+    "stats": {
+      "cpuUsage": 42,
+      "memoryUsage": 56,
+      "networkIO": "18 MB/s",
+      "networkOut": "10 MB/s",
+      "uptimeDays": 80,
+      "availability": "99.9%",
+      "networkUsage": 45,
+      "storageUsage": 33
+    }
   }
 ]

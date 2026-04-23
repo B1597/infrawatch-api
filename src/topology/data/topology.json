@@ -17,7 +17,7 @@
     "id": "dc-eu",
     "type": "datacenter",
     "label": "EU Datacenter",
-    "status": "warning",
+    "status": "online",
     "location": "Frankfurt"
   },
   {
@@ -45,7 +45,7 @@
     "id": "dc-ca",
     "type": "datacenter",
     "label": "Canada Datacenter",
-    "status": "warning",
+    "status": "online",
     "location": "Toronto"
   },
   {
@@ -59,8 +59,8 @@
     "id": "dc-br",
     "type": "datacenter",
     "label": "Brazil Datacenter",
-    "status": "critical",
-    "location": "S\u00e3o Paulo"
+    "status": "online",
+    "location": "São Paulo"
   },
   {
     "id": "dc-in",
@@ -128,7 +128,7 @@
     "id": "rack-w3",
     "type": "rack",
     "label": "Rack W3",
-    "status": "warning",
+    "status": "online",
     "parent": "dc-west",
     "meta": {
       "floor": "Floor 2"
@@ -158,7 +158,7 @@
     "id": "rack-eu1",
     "type": "rack",
     "label": "Rack EU1",
-    "status": "warning",
+    "status": "online",
     "parent": "dc-eu",
     "meta": {
       "floor": "Floor 2"
@@ -188,7 +188,7 @@
     "id": "rack-sg3",
     "type": "rack",
     "label": "Rack SG3",
-    "status": "warning",
+    "status": "online",
     "parent": "dc-ap-sg",
     "meta": {
       "floor": "Floor 2"
@@ -248,7 +248,7 @@
     "id": "rack-ca1",
     "type": "rack",
     "label": "Rack CA1",
-    "status": "warning",
+    "status": "online",
     "parent": "dc-ca",
     "meta": {
       "floor": "Floor 1"
@@ -288,7 +288,7 @@
     "id": "rack-br1",
     "type": "rack",
     "label": "Rack BR1",
-    "status": "critical",
+    "status": "online",
     "parent": "dc-br",
     "meta": {
       "floor": "Floor 1"
@@ -328,7 +328,7 @@
     "id": "rack-in3",
     "type": "rack",
     "label": "Rack IN3",
-    "status": "warning",
+    "status": "online",
     "parent": "dc-in",
     "meta": {
       "floor": "Floor 3"
@@ -504,7 +504,7 @@
     "id": "stor-w3-02",
     "type": "storage",
     "label": "NAS Backup W3-3",
-    "state": "warning",
+    "state": "online",
     "parent": "rack-w3",
     "ip": "10.0.3.11"
   },
@@ -544,7 +544,7 @@
     "id": "srv-eu1-01",
     "type": "server",
     "label": "Server EU1-8",
-    "state": "warning",
+    "state": "online",
     "parent": "rack-eu1",
     "ip": "10.2.1.10"
   },
@@ -584,7 +584,7 @@
     "id": "stor-sg3-01",
     "type": "storage",
     "label": "NAS Primary SG3-5",
-    "state": "warning",
+    "state": "online",
     "parent": "rack-sg3",
     "ip": "10.3.3.10"
   },
@@ -672,7 +672,7 @@
     "id": "srv-ca1-01",
     "type": "server",
     "label": "Server CA1-5",
-    "state": "warning",
+    "state": "online",
     "parent": "rack-ca1",
     "ip": "10.6.1.10"
   },
@@ -736,7 +736,7 @@
     "id": "srv-br1-01",
     "type": "server",
     "label": "Server BR1-5",
-    "state": "critical",
+    "state": "online",
     "parent": "rack-br1",
     "ip": "10.8.1.10"
   },
@@ -752,7 +752,7 @@
     "id": "sw-br2-01",
     "type": "switch",
     "label": "Core Switch BR2-6",
-    "state": "critical",
+    "state": "online",
     "parent": "rack-br2",
     "ip": "10.8.2.1"
   },
@@ -800,7 +800,7 @@
     "id": "stor-in3-01",
     "type": "storage",
     "label": "NAS Primary IN3-9",
-    "state": "warning",
+    "state": "online",
     "parent": "rack-in3",
     "ip": "10.9.3.10"
   },
@@ -816,7 +816,7 @@
     "id": "srv-za1-01",
     "type": "server",
     "label": "Server ZA1-3",
-    "state": "warning",
+    "state": "online",
     "parent": "rack-za1",
     "ip": "10.10.1.10"
   },
@@ -987,5 +987,229 @@
     "state": "online",
     "parent": "rack-kr2",
     "ip": "10.14.3.10"
+  },
+  {
+    "id": "vm-w1-01",
+    "type": "vm",
+    "label": "VM W1-A",
+    "state": "online",
+    "parent": "rack-w1",
+    "ip": "10.0.1.101"
+  },
+  {
+    "id": "vm-w1-02",
+    "type": "vm",
+    "label": "VM W1-B",
+    "state": "online",
+    "parent": "rack-w1",
+    "ip": "10.0.1.102"
+  },
+  {
+    "id": "vm-e1-01",
+    "type": "vm",
+    "label": "VM E1-A",
+    "state": "online",
+    "parent": "rack-e1",
+    "ip": "10.1.1.101"
+  },
+  {
+    "id": "vm-e1-02",
+    "type": "vm",
+    "label": "VM E1-B",
+    "state": "online",
+    "parent": "rack-e1",
+    "ip": "10.1.1.102"
+  },
+  {
+    "id": "vm-eu1-01",
+    "type": "vm",
+    "label": "VM EU1-A",
+    "state": "online",
+    "parent": "rack-eu1",
+    "ip": "10.2.1.101"
+  },
+  {
+    "id": "vm-eu1-02",
+    "type": "vm",
+    "label": "VM EU1-B",
+    "state": "online",
+    "parent": "rack-eu1",
+    "ip": "10.2.1.102"
+  },
+  {
+    "id": "vm-sg1-01",
+    "type": "vm",
+    "label": "VM SG1-A",
+    "state": "online",
+    "parent": "rack-sg1",
+    "ip": "10.3.1.101"
+  },
+  {
+    "id": "vm-sg1-02",
+    "type": "vm",
+    "label": "VM SG1-B",
+    "state": "online",
+    "parent": "rack-sg1",
+    "ip": "10.3.1.102"
+  },
+  {
+    "id": "vm-tk1-01",
+    "type": "vm",
+    "label": "VM TK1-A",
+    "state": "online",
+    "parent": "rack-tk1",
+    "ip": "10.4.1.101"
+  },
+  {
+    "id": "vm-tk1-02",
+    "type": "vm",
+    "label": "VM TK1-B",
+    "state": "online",
+    "parent": "rack-tk1",
+    "ip": "10.4.1.102"
+  },
+  {
+    "id": "vm-uk1-01",
+    "type": "vm",
+    "label": "VM UK1-A",
+    "state": "online",
+    "parent": "rack-uk1",
+    "ip": "10.5.1.101"
+  },
+  {
+    "id": "vm-uk1-02",
+    "type": "vm",
+    "label": "VM UK1-B",
+    "state": "online",
+    "parent": "rack-uk1",
+    "ip": "10.5.1.102"
+  },
+  {
+    "id": "vm-aus1-01",
+    "type": "vm",
+    "label": "VM AUS1-A",
+    "state": "online",
+    "parent": "rack-aus1",
+    "ip": "10.7.1.101"
+  },
+  {
+    "id": "vm-aus1-02",
+    "type": "vm",
+    "label": "VM AUS1-B",
+    "state": "online",
+    "parent": "rack-aus1",
+    "ip": "10.7.1.102"
+  },
+  {
+    "id": "vm-nl1-01",
+    "type": "vm",
+    "label": "VM NL1-A",
+    "state": "online",
+    "parent": "rack-nl1",
+    "ip": "10.11.1.101"
+  },
+  {
+    "id": "vm-nl1-02",
+    "type": "vm",
+    "label": "VM NL1-B",
+    "state": "online",
+    "parent": "rack-nl1",
+    "ip": "10.11.1.102"
+  },
+  {
+    "id": "vm-kr1-01",
+    "type": "vm",
+    "label": "VM KR1-A",
+    "state": "online",
+    "parent": "rack-kr1",
+    "ip": "10.14.1.101"
+  },
+  {
+    "id": "vm-kr1-02",
+    "type": "vm",
+    "label": "VM KR1-B",
+    "state": "online",
+    "parent": "rack-kr1",
+    "ip": "10.14.1.102"
+  },
+  {
+    "id": "svc-w1-01",
+    "type": "service",
+    "label": "Auth Service W1",
+    "state": "online",
+    "parent": "rack-w1",
+    "ip": "10.0.1.201"
+  },
+  {
+    "id": "svc-w2-01",
+    "type": "service",
+    "label": "API Gateway W2",
+    "state": "online",
+    "parent": "rack-w2",
+    "ip": "10.0.2.201"
+  },
+  {
+    "id": "svc-e1-01",
+    "type": "service",
+    "label": "Auth Service E1",
+    "state": "online",
+    "parent": "rack-e1",
+    "ip": "10.1.1.201"
+  },
+  {
+    "id": "svc-sg1-01",
+    "type": "service",
+    "label": "API Gateway SG1",
+    "state": "online",
+    "parent": "rack-sg1",
+    "ip": "10.3.1.201"
+  },
+  {
+    "id": "svc-eu1-01",
+    "type": "service",
+    "label": "Auth Service EU1",
+    "state": "online",
+    "parent": "rack-eu1",
+    "ip": "10.2.1.201"
+  },
+  {
+    "id": "svc-tk1-01",
+    "type": "service",
+    "label": "API Gateway TK1",
+    "state": "online",
+    "parent": "rack-tk1",
+    "ip": "10.4.1.201"
+  },
+  {
+    "id": "svc-uk1-01",
+    "type": "service",
+    "label": "Auth Service UK1",
+    "state": "online",
+    "parent": "rack-uk1",
+    "ip": "10.5.1.201"
+  },
+  {
+    "id": "svc-aus1-01",
+    "type": "service",
+    "label": "API Gateway AUS1",
+    "state": "online",
+    "parent": "rack-aus1",
+    "ip": "10.7.1.201"
+  },
+  {
+    "id": "svc-nl1-01",
+    "type": "service",
+    "label": "Auth Service NL1",
+    "state": "online",
+    "parent": "rack-nl1",
+    "ip": "10.11.1.201"
+  },
+  {
+    "id": "svc-kr1-01",
+    "type": "service",
+    "label": "Monitoring Service KR1",
+    "state": "online",
+    "parent": "rack-kr1",
+    "ip": "10.14.1.201"
   }
 ]

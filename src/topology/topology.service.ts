@@ -96,6 +96,7 @@ export class TopologyService {
       stats: {
         cpuUsage: node.cpuUsage ?? 0,
         memoryUsage: node.memoryUsage ?? 0,
+        storageUsage: node.storageUsage ?? 0,
         networkIO: node.networkIO ?? '',
         networkOut: node.networkOut ?? '',
         uptimeDays: node.uptimeDays ?? 0,

@@ -22,6 +22,9 @@ export class NodeStatsDto {
   memoryUsage!: number;
 
   @ApiProperty()
+  storageUsage!: number;
+
+  @ApiProperty()
   networkIO!: string;
 
   @ApiProperty()

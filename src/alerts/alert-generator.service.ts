@@ -1,96 +1,63 @@
+/**
+ * IMPORTANT!
+ * Simulates real-time alert generation for demo purposes.
+ * In production, alerts would be event-driven, pushed by device agents
+ * the moment a threshold is breached.
+ *
+ * Here we poll the Node table every 30s. To avoid flooding the system with
+ * alerts all at once, each cycle picks one random violating node per metric
+ * category (CPU, memory, storage, network) rather than alerting on every
+ * violation immediately. Deduplication ensures no duplicate active alerts
+ * exist for the same node and category.
+ */
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { AlertsService } from './alerts.service';
 import { PrismaService } from '../prisma/prisma.service';
 
-const rand = (min: number, max: number) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;
-
-const ALERT_TEMPLATES = [
+const THRESHOLDS = [
   {
-    title: 'High CPU Usage',
-    message: () =>
-      `CPU usage reached ${rand(91, 99)}% for more than ${rand(2, 10)} minutes.`,
-    severity: 'critical',
+    metric: 'cpuUsage' as const,
+    critical: 90,
+    warning: 85,
     category: 'performance',
-    deviceType: 'server',
+    title: (level: string) =>
+      `High CPU Usage${level === 'critical' ? ' — Critical' : ''}`,
+    message: (value: number) =>
+      `CPU usage is at ${value}% — sustained high load detected.`,
   },
   {
-    title: 'Memory Pressure Detected',
-    message: () => `Available memory dropped to ${rand(2, 9)}% on this node.`,
-    severity: 'warning',
+    metric: 'memoryUsage' as const,
+    critical: 90,
+    warning: 85,
     category: 'performance',
-    deviceType: 'server',
+    title: (level: string) =>
+      `Memory Pressure${level === 'critical' ? ' — Critical' : ' Detected'}`,
+    message: (value: number) =>
+      `Memory utilization reached ${value}% — available memory is low.`,
   },
   {
-    title: 'Network Packet Loss',
-    message: () =>
-      `Packet loss rate of ${rand(5, 20)}% detected on primary interface.`,
-    severity: 'warning',
+    metric: 'storageUsage' as const,
+    critical: 95,
+    warning: 92,
+    category: 'storage',
+    title: (level: string) =>
+      `${level === 'critical' ? 'Disk Space Critical' : 'Disk Space Warning'}`,
+    message: (value: number) =>
+      `Storage utilization at ${value}% — capacity threshold exceeded.`,
+  },
+  {
+    metric: 'networkUsage' as const,
+    critical: 90,
+    warning: 85,
     category: 'network',
-    deviceType: 'switch',
-  },
-  {
-    title: 'Disk Space Critical',
-    message: () =>
-      `Storage utilization reached ${rand(95, 99)}% — immediate action required.`,
-    severity: 'critical',
-    category: 'storage',
-    deviceType: 'server',
-  },
-  {
-    title: 'Service Unreachable',
-    message: () => `Health check failed ${rand(3, 6)} consecutive times.`,
-    severity: 'critical',
-    category: 'availability',
-    deviceType: 'service',
-  },
-  {
-    title: 'Temperature Warning',
-    message: () =>
-      `Chassis temperature sensor reading ${rand(76, 95)}°C — above safe operating range.`,
-    severity: 'warning',
-    category: 'hardware',
-    deviceType: 'server',
-  },
-  {
-    title: 'Backup Job Failed',
-    message: () => `Scheduled backup failed after ${rand(5, 45)} minutes.`,
-    severity: 'warning',
-    category: 'operations',
-    deviceType: 'vm',
-  },
-  {
-    title: 'Unauthorized Login Attempt',
-    message: () =>
-      `${rand(5, 50)} failed SSH login attempts detected from external IP.`,
-    severity: 'critical',
-    category: 'security',
-    deviceType: 'server',
-  },
-  {
-    title: 'NTP Sync Lost',
-    message: () =>
-      `Node has not synced with NTP server in over ${rand(30, 120)} minutes.`,
-    severity: 'info',
-    category: 'operations',
-    deviceType: 'server',
-  },
-  {
-    title: 'VM Snapshot Accumulation',
-    message: () =>
-      `${rand(10, 25)} snapshots detected — storage performance may degrade.`,
-    severity: 'info',
-    category: 'storage',
-    deviceType: 'vm',
+    title: (level: string) =>
+      `High Network Utilization${level === 'critical' ? ' — Critical' : ''}`,
+    message: (value: number) =>
+      `Network usage at ${value}% — interface approaching saturation.`,
   },
 ];
 
-const SOURCES_BY_DEVICE_TYPE: Record<string, string[]> = {
-  server: ['server-12', 'server-24', 'server-07', 'server-31'],
-  vm: ['vm-45', 'vm-89'],
-  switch: ['switch-core-1'],
-  service: ['firewall-edge'],
-};
+const EXCLUDED_TYPES = ['datacenter', 'rack'];
 
 @Injectable()
 export class AlertGeneratorService implements OnModuleInit, OnModuleDestroy {
@@ -102,37 +69,70 @@ export class AlertGeneratorService implements OnModuleInit, OnModuleDestroy {
   ) {}
 
   onModuleInit() {
-    this.intervalId = setInterval(() => void this.generateAlert(), 30_000);
+    this.intervalId = setInterval(() => void this.scanAndAlert(), 30_000);
   }
 
   onModuleDestroy() {
     if (this.intervalId) clearInterval(this.intervalId);
   }
 
-  private async generateAlert(): Promise<void> {
-    const template =
-      ALERT_TEMPLATES[Math.floor(Math.random() * ALERT_TEMPLATES.length)];
-
+  private async scanAndAlert(): Promise<void> {
     const nodes = await this.prisma.db.node.findMany({
-      where: { type: template.deviceType },
-      select: { id: true, name: true },
+      where: {
+        type: { notIn: EXCLUDED_TYPES },
+        OR: [
+          { cpuUsage: { not: null } },
+          { memoryUsage: { not: null } },
+          { storageUsage: { not: null } },
+          { networkUsage: { not: null } },
+        ],
+      },
+      select: {
+        id: true,
+        name: true,
+        type: true,
+        cpuUsage: true,
+        memoryUsage: true,
+        storageUsage: true,
+        networkUsage: true,
+      },
     });
 
-    const sourcePool = SOURCES_BY_DEVICE_TYPE[template.deviceType];
-    const node = nodes.length
-      ? nodes[Math.floor(Math.random() * nodes.length)]
-      : null;
+    const shuffled = nodes.sort(() => Math.random() - 0.5);
 
-    await this.alertsService.createAlert({
-      title: template.title,
-      message: template.message(),
-      severity: template.severity,
-      category: template.category,
-      deviceType: template.deviceType,
-      source:
-        node?.name ?? sourcePool[Math.floor(Math.random() * sourcePool.length)],
-      nodeId: node?.id ?? null,
-      timestamp: new Date(),
-    });
+    for (const threshold of THRESHOLDS) {
+      const candidate = shuffled.find((node) => {
+        const value = node[threshold.metric];
+        return (
+          value !== null && value !== undefined && value >= threshold.warning
+        );
+      });
+
+      if (!candidate) continue;
+
+      const value = candidate[threshold.metric]!;
+      const level = value >= threshold.critical ? 'critical' : 'warning';
+
+      const alreadyActive = await this.prisma.db.alert.findFirst({
+        where: {
+          nodeId: candidate.id,
+          category: threshold.category,
+          status: { in: ['active', 'acknowledged'] },
+        },
+      });
+
+      if (alreadyActive) continue;
+
+      await this.alertsService.createAlert({
+        title: threshold.title(level),
+        message: threshold.message(value),
+        severity: level,
+        category: threshold.category,
+        deviceType: candidate.type,
+        source: candidate.name,
+        nodeId: candidate.id,
+        timestamp: new Date(),
+      });
+    }
   }
 }
