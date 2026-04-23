@@ -7,7 +7,9 @@ export class DeviceDto {
   @ApiProperty()
   name!: string;
 
-  @ApiProperty({ enum: ['server', 'switch', 'router', 'storage', 'vm', 'service'] })
+  @ApiProperty({
+    enum: ['server', 'switch', 'router', 'storage', 'vm', 'service'],
+  })
   type!: 'server' | 'switch' | 'router' | 'storage' | 'vm' | 'service';
 
   @ApiProperty()

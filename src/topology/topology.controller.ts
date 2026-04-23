@@ -1,4 +1,14 @@
-import { Controller, Get, Patch, Param, Body, Query, Delete, HttpCode, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Patch,
+  Param,
+  Body,
+  Query,
+  Delete,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CheckNameDto } from './dto/check-name.dto';
 import { DatacenterDto } from './dto/datacenter.dto';
@@ -85,5 +95,4 @@ export class TopologyController {
   deleteNode(@Param('id') id: string) {
     return this.topologyService.deleteNode(id);
   }
-  
 }

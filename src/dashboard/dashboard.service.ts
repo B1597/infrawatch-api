@@ -9,14 +9,26 @@ export class DashboardService {
 
   async getStats(): Promise<DashboardStatsDto> {
     const totalNodes = await this.prisma.db.node.count();
-    const online = await this.prisma.db.node.count({ where: { status: 'online' } });
-    const warnings = await this.prisma.db.node.count({ where: { status: 'warning' } });
-    const offline = await this.prisma.db.node.count({ where: { status: 'offline' } });
-    const datacenters = await this.prisma.db.node.count({ where: { type: 'datacenter' } });
+    const online = await this.prisma.db.node.count({
+      where: { status: 'online' },
+    });
+    const warnings = await this.prisma.db.node.count({
+      where: { status: 'warning' },
+    });
+    const offline = await this.prisma.db.node.count({
+      where: { status: 'offline' },
+    });
+    const datacenters = await this.prisma.db.node.count({
+      where: { type: 'datacenter' },
+    });
     const racks = await this.prisma.db.node.count({ where: { type: 'rack' } });
-    const servers = await this.prisma.db.node.count({ where: { type: 'server' } });
+    const servers = await this.prisma.db.node.count({
+      where: { type: 'server' },
+    });
     const vms = await this.prisma.db.node.count({ where: { type: 'vm' } });
-    const services = await this.prisma.db.node.count({ where: { type: 'service' } });
+    const services = await this.prisma.db.node.count({
+      where: { type: 'service' },
+    });
 
     return {
       totalNodes,
@@ -32,8 +44,8 @@ export class DashboardService {
         totalNodes: { change: 5, direction: 'up' },
         warnings: { change: -2, direction: 'down' },
       },
-    }; 
-  }   
+    };
+  }
 
   async getHealth(): Promise<DashboardHealthDto> {
     const result = await this.prisma.db.node.aggregate({

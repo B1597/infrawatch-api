@@ -70,11 +70,16 @@ describe('TopologyService', () => {
     it('should throw NotFoundException if datacenter not found', async () => {
       mockPrismaService.db.node.findFirst.mockResolvedValue(null);
 
-      await expect(service.getRacks('bad-id')).rejects.toThrow(NotFoundException);
+      await expect(service.getRacks('bad-id')).rejects.toThrow(
+        NotFoundException,
+      );
     });
 
     it('should return racks for a valid datacenter', async () => {
-      mockPrismaService.db.node.findFirst.mockResolvedValue({ ...mockNode, type: 'datacenter' });
+      mockPrismaService.db.node.findFirst.mockResolvedValue({
+        ...mockNode,
+        type: 'datacenter',
+      });
       mockPrismaService.db.node.findMany.mockResolvedValue([
         { ...mockNode, type: 'rack', floor: '1st Floor' },
       ]);
@@ -90,11 +95,16 @@ describe('TopologyService', () => {
     it('should throw NotFoundException if rack not found', async () => {
       mockPrismaService.db.node.findFirst.mockResolvedValue(null);
 
-      await expect(service.getDevices('bad-id')).rejects.toThrow(NotFoundException);
+      await expect(service.getDevices('bad-id')).rejects.toThrow(
+        NotFoundException,
+      );
     });
 
     it('should return devices for a valid rack', async () => {
-      mockPrismaService.db.node.findFirst.mockResolvedValue({ ...mockNode, type: 'rack' });
+      mockPrismaService.db.node.findFirst.mockResolvedValue({
+        ...mockNode,
+        type: 'rack',
+      });
       mockPrismaService.db.node.findMany.mockResolvedValue([mockNode]);
 
       const result = await service.getDevices('rack-1');
@@ -108,7 +118,9 @@ describe('TopologyService', () => {
     it('should throw NotFoundException if node not found', async () => {
       mockPrismaService.db.node.findUnique.mockResolvedValue(null);
 
-      await expect(service.getNodeDetails('bad-id')).rejects.toThrow(NotFoundException);
+      await expect(service.getNodeDetails('bad-id')).rejects.toThrow(
+        NotFoundException,
+      );
     });
 
     it('should return node details with correct data transformation', async () => {

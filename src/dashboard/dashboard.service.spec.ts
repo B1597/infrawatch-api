@@ -37,14 +37,14 @@ describe('DashboardService', () => {
     it('should return correct stats from db', async () => {
       mockPrismaService.db.node.count
         .mockResolvedValueOnce(100) // totalNodes
-        .mockResolvedValueOnce(60)  // online
-        .mockResolvedValueOnce(10)  // warnings
-        .mockResolvedValueOnce(20)  // offline
-        .mockResolvedValueOnce(5)   // datacenters
-        .mockResolvedValueOnce(15)  // racks
-        .mockResolvedValueOnce(30)  // servers
-        .mockResolvedValueOnce(0)   // vms
-        .mockResolvedValueOnce(0);  // services
+        .mockResolvedValueOnce(60) // online
+        .mockResolvedValueOnce(10) // warnings
+        .mockResolvedValueOnce(20) // offline
+        .mockResolvedValueOnce(5) // datacenters
+        .mockResolvedValueOnce(15) // racks
+        .mockResolvedValueOnce(30) // servers
+        .mockResolvedValueOnce(0) // vms
+        .mockResolvedValueOnce(0); // services
 
       const result = await service.getStats();
 
@@ -58,7 +58,6 @@ describe('DashboardService', () => {
       expect(result.vms).toBe(0);
       expect(result.services).toBe(0);
     });
-
   });
 
   describe('getHealth', () => {

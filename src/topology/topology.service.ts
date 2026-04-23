@@ -1,4 +1,8 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { DatacenterDto } from './dto/datacenter.dto';
 import { DeviceDto } from './dto/device.dto';
@@ -29,7 +33,8 @@ export class TopologyService {
     const datacenter = await this.prisma.db.node.findFirst({
       where: { id: datacenterId, type: 'datacenter' },
     });
-    if (!datacenter) throw new NotFoundException(`Datacenter ${datacenterId} not found`);
+    if (!datacenter)
+      throw new NotFoundException(`Datacenter ${datacenterId} not found`);
 
     const racks = await this.prisma.db.node.findMany({
       where: { type: 'rack', parentId: datacenterId },
@@ -52,7 +57,9 @@ export class TopologyService {
 
     const devices = await this.prisma.db.node.findMany({
       where: {
-        type: { in: ['server', 'switch', 'router', 'storage', 'vm', 'service'] },
+        type: {
+          in: ['server', 'switch', 'router', 'storage', 'vm', 'service'],
+        },
         parentId: rackId,
       },
     });
@@ -98,8 +105,11 @@ export class TopologyService {
   }
 
   async getNodeMetrics(id: string): Promise<NodeMetricsDto> {
-    const metrics = await this.prisma.db.nodeMetrics.findUnique({ where: { nodeId: id } });
-    if (!metrics) throw new NotFoundException(`Metrics for node ${id} not found`);
+    const metrics = await this.prisma.db.nodeMetrics.findUnique({
+      where: { nodeId: id },
+    });
+    if (!metrics)
+      throw new NotFoundException(`Metrics for node ${id} not found`);
     return metrics.data as unknown as NodeMetricsDto;
   }
 
@@ -145,7 +155,9 @@ export class TopologyService {
     let current = node;
 
     while (current.parentId) {
-      const parent = await this.prisma.db.node.findUnique({ where: { id: current.parentId } });
+      const parent = await this.prisma.db.node.findUnique({
+        where: { id: current.parentId },
+      });
       if (!parent) break;
       path.unshift({ id: parent.id, name: parent.name, type: parent.type });
       current = parent;
@@ -171,7 +183,10 @@ export class TopologyService {
     );
   }
 
-  async updateNodeConfig(id: string, dto: UpdateNodeConfigDto): Promise<NodeConfigDto> {
+  async updateNodeConfig(
+    id: string,
+    dto: UpdateNodeConfigDto,
+  ): Promise<NodeConfigDto> {
     const nodeData = {
       ...(dto.name !== undefined && { name: dto.name }),
       ...(dto.location !== undefined && { location: dto.location }),
@@ -180,7 +195,9 @@ export class TopologyService {
 
     const configData = {
       ...(dto.password !== undefined && { password: dto.password }),
-      ...(dto.registrationId !== undefined && { registrationId: dto.registrationId }),
+      ...(dto.registrationId !== undefined && {
+        registrationId: dto.registrationId,
+      }),
     };
 
     const node = await this.prisma.db.node.update({

@@ -73,7 +73,9 @@ describe('AlertsService', () => {
     it('should throw NotFoundException if alert not found', async () => {
       mockPrismaService.db.alert.findUnique.mockResolvedValue(null);
 
-      await expect(service.getAlertById('not-real')).rejects.toThrow(NotFoundException);
+      await expect(service.getAlertById('not-real')).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
 
@@ -95,7 +97,9 @@ describe('AlertsService', () => {
     it('should throw NotFoundException if alert not found', async () => {
       mockPrismaService.db.alert.findUnique.mockResolvedValue(null);
 
-      await expect(service.acknowledgeAlert('not-real')).rejects.toThrow(NotFoundException);
+      await expect(service.acknowledgeAlert('not-real')).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
 
@@ -115,7 +119,9 @@ describe('AlertsService', () => {
     it('should throw NotFoundException if alert not found', async () => {
       mockPrismaService.db.alert.findUnique.mockResolvedValue(null);
 
-      await expect(service.resolveAlert('not-real')).rejects.toThrow(NotFoundException);
+      await expect(service.resolveAlert('not-real')).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
 });

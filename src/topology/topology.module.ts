@@ -4,6 +4,6 @@ import { TopologyService } from './topology.service';
 
 @Module({
   controllers: [TopologyController],
-  providers: [TopologyService]
+  providers: [TopologyService],
 })
 export class TopologyModule {}

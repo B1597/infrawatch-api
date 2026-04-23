@@ -8,7 +8,8 @@ const rand = (min: number, max: number) =>
 const ALERT_TEMPLATES = [
   {
     title: 'High CPU Usage',
-    message: () => `CPU usage reached ${rand(91, 99)}% for more than ${rand(2, 10)} minutes.`,
+    message: () =>
+      `CPU usage reached ${rand(91, 99)}% for more than ${rand(2, 10)} minutes.`,
     severity: 'critical',
     category: 'performance',
     deviceType: 'server',
@@ -22,14 +23,16 @@ const ALERT_TEMPLATES = [
   },
   {
     title: 'Network Packet Loss',
-    message: () => `Packet loss rate of ${rand(5, 20)}% detected on primary interface.`,
+    message: () =>
+      `Packet loss rate of ${rand(5, 20)}% detected on primary interface.`,
     severity: 'warning',
     category: 'network',
     deviceType: 'switch',
   },
   {
     title: 'Disk Space Critical',
-    message: () => `Storage utilization reached ${rand(95, 99)}% — immediate action required.`,
+    message: () =>
+      `Storage utilization reached ${rand(95, 99)}% — immediate action required.`,
     severity: 'critical',
     category: 'storage',
     deviceType: 'server',
@@ -43,7 +46,8 @@ const ALERT_TEMPLATES = [
   },
   {
     title: 'Temperature Warning',
-    message: () => `Chassis temperature sensor reading ${rand(76, 95)}°C — above safe operating range.`,
+    message: () =>
+      `Chassis temperature sensor reading ${rand(76, 95)}°C — above safe operating range.`,
     severity: 'warning',
     category: 'hardware',
     deviceType: 'server',
@@ -57,21 +61,24 @@ const ALERT_TEMPLATES = [
   },
   {
     title: 'Unauthorized Login Attempt',
-    message: () => `${rand(5, 50)} failed SSH login attempts detected from external IP.`,
+    message: () =>
+      `${rand(5, 50)} failed SSH login attempts detected from external IP.`,
     severity: 'critical',
     category: 'security',
     deviceType: 'server',
   },
   {
     title: 'NTP Sync Lost',
-    message: () => `Node has not synced with NTP server in over ${rand(30, 120)} minutes.`,
+    message: () =>
+      `Node has not synced with NTP server in over ${rand(30, 120)} minutes.`,
     severity: 'info',
     category: 'operations',
     deviceType: 'server',
   },
   {
     title: 'VM Snapshot Accumulation',
-    message: () => `${rand(10, 25)} snapshots detected — storage performance may degrade.`,
+    message: () =>
+      `${rand(10, 25)} snapshots detected — storage performance may degrade.`,
     severity: 'info',
     category: 'storage',
     deviceType: 'vm',
@@ -122,7 +129,8 @@ export class AlertGeneratorService implements OnModuleInit, OnModuleDestroy {
       severity: template.severity,
       category: template.category,
       deviceType: template.deviceType,
-      source: node?.name ?? sourcePool[Math.floor(Math.random() * sourcePool.length)],
+      source:
+        node?.name ?? sourcePool[Math.floor(Math.random() * sourcePool.length)],
       nodeId: node?.id ?? null,
       timestamp: new Date(),
     });
